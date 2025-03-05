@@ -1,0 +1,36 @@
+@import './base.css';
+
+#app {
+  width: 100%; /* Use the full screen width */
+  max-width: 100%; /* Ensure no maximum limit */
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: rgb(128, 96, 231);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(263, 79%, 66%, 0.705);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+    width: 100%;
+  }
+
+  #app {
+    display: block; /* Avoid grid if not necessary */
+    padding: 0;
+  }
+}
