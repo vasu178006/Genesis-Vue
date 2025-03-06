@@ -9,9 +9,9 @@
           <a href="#">PC Components</a>
           <div class="dropdown">
             <Router-link to="/Components">Graphics Cards</Router-link>
-            <li><router-link to="/components">Processors</router-link></li>
-            <li><router-link to="/components">Motherboard</router-link></li>
-            <li><router-link to="/components">Power Supplies</router-link></li>
+            <Router-link to="/Components">Processors</Router-link>
+            <Router-link to="/Components">Motherboards</Router-link>
+            <Router-link to="/Components">Pwer supplies</Router-link>
           </div>
         </div>
         <div class="nav-item">
