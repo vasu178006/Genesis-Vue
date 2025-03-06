@@ -117,6 +117,23 @@
             description: 'Powerful performance for your gaming adventures.',
             image: 'images/gaming_laptop.webp'
           },
+          
+        
+          {
+            name: 'Ultrabook',
+            description: 'Lightweight and sleek for on-the-go productivity.',
+            image: 'images/ultrabook.webp'
+          },
+          {
+            name: 'Workstation Laptop',
+            description: 'Optimized for heavy tasks and professional use.',
+            image: 'images/workstation_laptop.webp'
+          },
+          {
+            name: 'Gaming Laptop',
+            description: 'Powerful performance for your gaming adventures.',
+            image: 'images/gaming_laptop.webp'
+          },
           {
             name: 'Ultrabook',
             description: 'Lightweight and sleek for on-the-go productivity.',
@@ -127,6 +144,7 @@
             description: 'Optimized for heavy tasks and professional use.',
             image: 'images/workstation_laptop.webp'
           }
+          
         ],
         items: {
           'Graphics Cards': 'graphics-cards.html',
