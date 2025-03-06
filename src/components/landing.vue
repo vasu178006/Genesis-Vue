@@ -26,7 +26,7 @@
         <div class="nav-item">
           <a href="#">Laptops</a>
           <div class="dropdown">
-            <a href="#">Gaming Laptops</a>
+            <Router-link to="/laptops">Gaming Laptop</Router-link>
             <a href="#">Ultrabooks</a>
             <a href="#">Workstation Laptops</a>
           </div>

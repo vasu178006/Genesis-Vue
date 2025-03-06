@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LandingPage from '../components/landing.vue';
 import LoginPage from '../components/loginpage.vue';
 import AboutView from '../views/AboutView.vue';
-import ComponentsPage from'../components/components.vue';
+import ComponentsPage from'../components/Components.vue';
+import Laptops from '../components/laptops.vue';
 import { auth } from '../firebase';
 
 function authGuard(to, from, next) {
@@ -42,6 +43,12 @@ const router = createRouter({
       path: '/components',
       name: 'Components',
       component: ComponentsPage,
+      beforeEnter: authGuard,
+    },
+    {
+      path: '/Laptops',
+      name: 'laptops',
+      component: Laptops,
       beforeEnter: authGuard,
     },
     {
