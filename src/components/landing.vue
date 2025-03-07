@@ -1,5 +1,6 @@
 <template>
-  <div class="main-container">
+  <div class="bodyfont">
+   <div class="main-container">
     <header class="navbar">
       <div class="logo">
         <img src="/src/assets/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;">
@@ -73,6 +74,7 @@
     <footer>
       <p>&copy; 2025 Genesis. All rights reserved.</p>
     </footer>
+  </div>
   </div>
 </template>
 
@@ -194,10 +196,14 @@ mounted() {
   });
   }
 }
-</script>
+</script>;
 
 <style scoped>
 /* Global and Reset Styles */
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap');
+.bodyfont{
+  font-family:'Aldrich',sans-serif;
+}
 * {
   box-sizing: border-box;
   margin: 0;

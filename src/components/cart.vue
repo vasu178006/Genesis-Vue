@@ -9,11 +9,19 @@
       <div v-else class="cart-content">
         <div class="cart-items">
           <div v-for="(item, index) in cart" :key="index" class="cart-item">
+            <div class="item-image">
+              <img :src="item.image" :alt="item.name" />
+            </div>
             <div class="item-info">
               <div class="item-name">{{ item.name }}</div>
-              <div class="item-price">₹{{ item.price.toFixed(2) }} × {{ item.quantity }}</div>
+              <div class="item-price">${{ item.price.toFixed(2) }}</div>
+              <div class="quantity-controls">
+                <button @click="updateQuantity(index, -1)" class="quantity-btn">-</button>
+                <span class="quantity">{{ item.quantity }}</span>
+                <button @click="updateQuantity(index, 1)" class="quantity-btn">+</button>
+              </div>
             </div>
-            <div class="item-total">₹{{ (item.price * item.quantity).toFixed(2) }}</div>
+            <div class="item-total">${{ (item.price * item.quantity).toFixed(2) }}</div>
             <button @click="removeFromCart(index)" class="remove-btn">Remove</button>
           </div>
         </div>
@@ -21,7 +29,7 @@
         <div class="cart-summary">
           <div class="total-row">
             <span class="total-label">Total:</span>
-            <span class="total-amount">₹{{ cartTotal.toFixed(2) }}</span>
+            <span class="total-amount">${{ cartTotal.toFixed(2) }}</span>
           </div>
         </div>
       </div>
@@ -47,34 +55,60 @@
         );
       },
       navigateTo(item) {
-        this.$router.push(this.items[item]); // Use Vue Router for navigation
+        this.$router.push(this.items[item]);
       },
       goToCart() {
-        this.$router.push('/cart'); // Navigate to the cart route
+        this.$router.push('/cart');
       },
       addToCart(item) {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const existingItem = cart.find((cartItem) => cartItem.name === item.name);
         if (existingItem) {
-          existingItem.quantity += 1; // Increase quantity if item exists
+          existingItem.quantity += 1;
         } else {
-          cart.push({ name: item.name, price: parseFloat(item.price), quantity: 1 }); // Ensure correct structure
+          cart.push({ name: item.name, price: parseFloat(item.price), quantity: 1 });
         }
         localStorage.setItem('cart', JSON.stringify(cart));
+        this.cart = cart; // Directly update the cart data
         alert(`${item.name} added to cart!`);
-        this.loadCart(); // Refresh cart data
       },
       loadCart() {
-        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-        this.cart = storedCart;
+        try {
+          const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+          this.cart = storedCart;
+        } catch (error) {
+          console.error('Error loading cart:', error);
+          this.cart = [];
+        }
       },
       removeFromCart(index) {
         this.cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(this.cart));
+        this.saveCart();
+      },
+      updateQuantity(index, change) {
+        if (this.cart[index].quantity + change > 0) {
+          this.cart[index].quantity += change;
+          this.saveCart();
+        }
+      },
+      saveCart() {
+        try {
+          localStorage.setItem('cart', JSON.stringify(this.cart));
+        } catch (error) {
+          console.error('Error saving cart:', error);
+        }
       }
     },
     mounted() {
-      this.loadCart(); // Load cart data on component mount
+      this.loadCart();
+    },
+    watch: {
+      cart: {
+        handler(newCart) {
+          this.saveCart();
+        },
+        deep: true
+      }
     }
   };
   </script>
@@ -85,20 +119,23 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #0e0c11;
+    color: white;
   }
   
   h1 {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
+    color: white;
   }
   
   .empty-cart {
     text-align: center;
     padding: 40px;
     font-size: 18px;
-    color: #666;
-    background-color: #f9f9f9;
+    color: #ccc;
+    background-color: #18141d;
     border-radius: 8px;
   }
   
@@ -111,7 +148,22 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #333;
+    background-color: #18141d;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+  .item-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+  }
+
+  .item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   
   .item-info {
@@ -122,10 +174,11 @@
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 16px;
+    color: white;
   }
   
   .item-price {
-    color: #666;
+    color: #a855f7;
     font-size: 14px;
   }
   
@@ -133,6 +186,7 @@
     flex: 1;
     text-align: right;
     font-weight: bold;
+    color: #a855f7;
   }
   
   .remove-btn {
@@ -150,7 +204,7 @@
   }
   
   .cart-summary {
-    background-color: #f9f9f9;
+    background-color: #18141d;
     padding: 15px;
     border-radius: 8px;
   }
@@ -165,11 +219,43 @@
   .total-label {
     font-size: 18px;
     font-weight: bold;
+    color: white;
   }
   
   .total-amount {
     font-size: 22px;
     font-weight: bold;
     color: #a855f7;
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+  }
+  
+  .quantity-btn {
+    background: #a855f7;
+    border: none;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quantity-btn:hover {
+    background: #9333ea;
+  }
+  
+  .quantity {
+    min-width: 24px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
   }
   </style>

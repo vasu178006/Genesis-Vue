@@ -5,7 +5,7 @@
     <div class="button-group fade-in">
       <button @click="signInWithGoogle" :disabled="loading" class="google-button">
         <span v-if="loading" class="loader"></span>
-        <span v-else>🚀 Sign in with Google</span>
+        <span v-else>🔒 Sign in with Google</span>
       </button>
     </div>
 

@@ -35,7 +35,7 @@
     <!-- Added Hero Section -->
     <section class="hero">
       <video width="200px" autoplay loop muted>
-        <source src="/src/assets/video/13057075_3840_2160_24fps.mp4" type="video/mp4" />
+        <source src="/src/assets/video/laptops.mp4" type="video/mp4" />
       </video>
       <div class="hero-text">
         <h1>Powerful Laptops for Every Need</h1>

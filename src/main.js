@@ -5,6 +5,7 @@ import router from './router';
 import { createPinia } from 'pinia';
 import './firebase'; // Ensure Firebase is correctly imported
 import './assets/main.css'; // Ensure styles are loaded
+import './assets/main.css';
 
 const app = createApp(App);
 const pinia = createPinia();

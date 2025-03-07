@@ -79,7 +79,7 @@
             </div>
             
             <div class="product-price">{{ product.price }}</div>
-            <button class="add-to-cart" @click="addToCart(product.name)">Add to Cart</button>
+            <button class="add-to-cart" @click="addToCart(product)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -101,6 +101,7 @@ export default {
       query: '',
       searchResults: [],
       hoveredProduct: null,
+      cart: [],
       products: [
         {
           name: 'NVIDIA RTX 4090',
@@ -246,16 +247,65 @@ export default {
       );
     },
     navigateTo(item) {
-      window.location.href = this.items[item];
+      this.$router.push(this.items[item]);
     },
     goToCart() {
-      window.location.href = 'cart.html';
+      this.$router.push('/cart');
     },
-    addToCart(item) {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push(item);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${item} added to cart!`);
+    addToCart(product) {
+      try {
+        // Get current cart from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Find if item already exists
+        const existingItem = cart.find(item => item.name === product.name);
+        
+        if (existingItem) {
+          // If item exists, increase quantity
+          existingItem.quantity += 1;
+        } else {
+          // If item doesn't exist, add new item
+          cart.push({
+            name: product.name,
+            price: parseFloat(product.price.replace('$', '').replace(',', '')),
+            quantity: 1,
+            image: product.image,
+            description: product.description
+          });
+        }
+        
+        // Save updated cart to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Update local cart state
+        this.cart = cart;
+        
+        // Show success message
+        alert(`${product.name} added to cart!`);
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+        alert('Failed to add item to cart. Please try again.');
+      }
+    },
+    loadCart() {
+      try {
+        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        this.cart = storedCart;
+      } catch (error) {
+        console.error('Error loading cart:', error);
+        this.cart = [];
+      }
+    }
+  },
+  mounted() {
+    this.loadCart();
+  },
+  watch: {
+    cart: {
+      handler(newCart) {
+        localStorage.setItem('cart', JSON.stringify(newCart));
+      },
+      deep: true
     }
   }
 };
@@ -620,22 +670,18 @@ footer {
     flex-direction: column;
     padding: 1rem;
   }
-  
   nav {
     margin: 1rem 0;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
   .products {
     grid-template-columns: 1fr;
   }
-  
   .filters {
     flex-wrap: wrap;
   }
 }
-
 @media (max-width: 480px) {
   .product-image {
     height: 150px;
@@ -650,7 +696,6 @@ footer {
   background: #18141d;
   margin-top: 2rem;
 }
-
 .brands img {
   height: 40px;
   margin: 1rem 2rem;
@@ -658,7 +703,6 @@ footer {
   transition: opacity 0.3s, transform 0.3s;
   filter: grayscale(100%);
 }
-
 .brands img:hover {
   opacity: 1;
   transform: scale(1.1);
