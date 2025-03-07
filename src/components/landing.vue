@@ -6,46 +6,19 @@
       </div>
       <nav class="main-nav">
         <div class="nav-item">
-          <a href="#">PC Components</a>
-          <div class="dropdown">
-            <Router-link to="/Components">Graphics Cards</Router-link>
-            <Router-link to="/Components">Processors</Router-link>
-            <Router-link to="/Components">Motherboards</Router-link>
-            <Router-link to="/Components">Pwer supplies</Router-link>
-          </div>
+          <Router-link to="/Components">Components</Router-link>
         </div>
         <div class="nav-item">
           <a href="#">Gaming Gear</a>
-          <div class="dropdown">
-            <a href="#">Gaming Mice</a>
-            <a href="#">Gaming Keyboards</a>
-            <a href="#">Gaming Headsets</a>
-            <a href="#">Controllers</a>
-          </div>
         </div>
         <div class="nav-item">
-          <a href="#">Laptops</a>
-          <div class="dropdown">
-            <Router-link to="/laptops">Gaming Laptop</Router-link>
-            <a href="#">Ultrabooks</a>
-            <a href="#">Workstation Laptops</a>
-          </div>
+         <RouterLink to="/laptops">Laptops</RouterLink>
         </div>
         <div class="nav-item">
           <a href="#">Storage</a>
-          <div class="dropdown">
-            <a href="#">SSD</a>
-            <a href="#">HDD</a>
-            <a href="#">External Drives</a>
-          </div>
         </div>
         <div class="nav-item">
           <a href="#">Peripherals</a>
-          <div class="dropdown">
-            <a href="#">Monitors</a>
-            <a href="#">Webcams</a>
-            <a href="#">Speakers</a>
-          </div>
         </div>
       </nav>
       <div class="icons">
@@ -56,7 +29,7 @@
               {{ item }}
             </div>
           </div>
-          <button @click="navigateTo('cart.html')">🛒</button>
+          <router-link to="/cart" class="cart-button">🛒</router-link>
           <button>👤</button>
         </div>
       </div>
@@ -162,44 +135,65 @@ export default {
     };
   },
   computed: {
-    filteredItems() {
-      const query = this.searchQuery.toLowerCase();
-      if (!query) return {};
-      
-      return Object.keys(this.items)
-        .filter(item => item.toLowerCase().includes(query))
-        .reduce((obj, key) => {
-          obj[key] = this.items[key];
-          return obj;
-        }, {});
-    }
+  filteredItems() {
+    const query = this.searchQuery.toLowerCase();
+    if (!query) return this.items; // Return all items if query is empty
+
+    return Object.keys(this.items)
+      .filter(item => item.toLowerCase().includes(query))
+      .reduce((obj, key) => {
+        obj[key] = this.items[key];
+        return obj;
+      }, {});
+  }
+},
+methods: {
+  handleSearch() {
+    this.showResults = this.searchQuery.length > 0;
   },
-  methods: {
-    handleSearch() {
-      this.showResults = this.searchQuery.length > 0;
-    },
-    navigateTo(url) {
-      window.location.href = url;
-    },
-    addToCart(item) {
+  navigateTo(url) {
+    window.location.href = url;
+  },
+  addToCart(item) {
+    try {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.push(item);
       localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${item} added to cart!`);
+      alert(`${item.name} added to cart!`);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
     }
   },
-  mounted() {
-    // This attaches event listeners to any add-to-cart buttons that might be rendered
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    addToCartButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const productItem = button.closest('.product-item');
-        const productName = productItem.querySelector('h3').textContent;
-        this.addToCart(productName);
-      });
+  handleAddToCart(productItem) {
+    const productName = productItem.querySelector('h3').textContent;
+    const productDescription = productItem.querySelector('p')?.textContent || '';
+    const productPrice = parseFloat(productItem.querySelector('.price')?.textContent.replace('$', '') || '0');
+
+    this.addToCart({
+      name: productName,
+      description: productDescription,
+      price: productPrice
     });
   }
-};
+},
+mounted() {
+  this.$nextTick(() => {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    if (addToCartButtons) {
+      addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const productItem = button.closest('.product-item');
+          if (productItem) {
+            this.handleAddToCart(productItem);
+          }
+        });
+      });
+    } else {
+      console.warn('No .add-to-cart buttons found.');
+    }
+  });
+  }
+}
 </script>
 
 <style scoped>
@@ -250,7 +244,11 @@ export default {
   display: inline-block;
   font-size: 16px; /* Increased font size */
 }
-
+.nav-item > a:hover {
+  background-color: #9c74c21a; /* Light purple color */
+  border-radius: 8px; /* Adding border radius */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
 .dropdown {
   display: none;
   position: absolute;
@@ -274,7 +272,8 @@ export default {
 }
 
 .dropdown a:hover {
-  background: #d8b5ff;
+  background: #6a696b56;
+  border-radius: 0.5;
 }
 
 .nav-item:hover .dropdown {

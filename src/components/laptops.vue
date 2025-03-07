@@ -31,6 +31,18 @@
         </div>
       </div>
     </header>
+
+    <!-- Added Hero Section -->
+    <section class="hero">
+      <video width="200px" autoplay loop muted>
+        <source src="/src/assets/video/13057075_3840_2160_24fps.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-text">
+        <h1>Powerful Laptops for Every Need</h1>
+        <p>Find the perfect laptop for gaming, work, or everyday use.</p>
+      </div>
+    </section>
+
     <!-- Products Section -->
     <section class="product-list">
       <div 
@@ -353,6 +365,28 @@ export default {
   color: white;
 }
 
+/* Added Hero Section Styles */
+.hero {
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero video {
+  width: 58%;
+  border-radius: 12px;
+}
+
+.hero-text {
+  max-width: 40%;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
 /* Store Header */
 .store-header {
   background-color: #18141d;
@@ -534,6 +568,23 @@ footer {
   padding: 1rem;
   background: #18141d;
   margin-top: auto;
+}
+
+/* Added responsive styles for hero section */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+  }
+  
+  .hero video, .hero-text {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .hero-text {
+    margin-top: 2rem;
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {
