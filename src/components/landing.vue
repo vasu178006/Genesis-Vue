@@ -21,6 +21,9 @@
         <div class="nav-item">
           <RouterLink to="/peripherals">Peripherals</RouterLink>
         </div>
+        <div class="nav-item">
+          <RouterLink to="/about">About</RouterLink>
+        </div>
       </nav>
       <div class="icons">
         <div class="search-bar">
@@ -31,7 +34,7 @@
             </div>
           </div>
           <router-link to="/cart" class="cart-button">🛒</router-link>
-          <button>👤</button>
+          <RouterLink to="/user">👤</RouterLink>
         </div>
       </div>
     </header>
@@ -79,6 +82,8 @@
 </template>
 
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
   name: 'GenesisLandingPage',
   data() {

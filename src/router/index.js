@@ -8,6 +8,8 @@ import Cart from '../components/cart.vue'
 import Gear from '../components/gears.vue'
 import Storage from '../components/storage.vue'
 import Peripherals from '../components/peripherals.vue'
+import About from '../components/about.vue'
+import User from '../components/user.vue'
 import { auth } from '../firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 
@@ -129,6 +131,29 @@ const routes = [
       category: 'shop'
     }
   },
+  {
+    path: '/about',
+    name: 'about',
+    component: About, // Fixed: Changed Gears to Gear to match import
+    beforeEnter: requireAuth,
+    meta: {
+      title: 'About', // Fixed: Corrected the title from "Shopping Cart"
+      requiresAuth: true,
+      category: 'shop'
+    }
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: User, // Fixed: Changed Gears to Gear to match import
+    beforeEnter: requireAuth,
+    meta: {
+      title: 'User', // Fixed: Corrected the title from "Shopping Cart"
+      requiresAuth: true,
+      category: 'shop'
+    }
+  },
+
   
   // Catch-all route
   {
