@@ -3,7 +3,7 @@
     <div>
       <header class="navbar">
         <div class="logo">
-          <img src="/src/assets/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;" />
+          <img src="/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;" />
         </div>
         <nav>
           <div class="nav-item">
@@ -106,7 +106,7 @@
             name: 'Razer Huntsman V3 Pro',
             description: 'Premium optical mechanical gaming keyboard with customizable actuation points and Gen-3 optical switches for lightning-fast response.',
             price: '$249.99',
-            image: '/src/assets/images/huntsman.webp',
+            image: '/images/huntsman.webp',
             badge: 'Keyboard',
             specs: {
               'SWITCHES': 'Optical Gen-3',
@@ -121,7 +121,7 @@
             name: 'Logitech G Pro X Superlight 2',
             description: 'Ultra-lightweight wireless gaming mouse with HERO 2 sensor and zero-compromise performance for professional esports players.',
             price: '$159.99',
-            image: '/src/assets/images/gpro.png',
+            image: '/images/gpro.png',
             badge: 'Mouse',
             specs: {
               'SENSOR': 'HERO 2 32K DPI',
@@ -136,7 +136,7 @@
             name: 'SteelSeries Arctis Nova Pro',
             description: 'Premium wireless gaming headset with multi-system connectivity, active noise cancellation, and hot-swappable batteries.',
             price: '$349.99',
-            image: '/src/assets/images/novapro.webp',
+            image: '/images/novapro.webp',
             badge: 'Headset',
             specs: {
               'DRIVERS': '40mm High-Fidelity',
@@ -151,7 +151,7 @@
             name: 'ASUS ROG Azoth',
             description: 'Enthusiast-grade wireless gaming keyboard with tri-mode connectivity, OLED display, and hot-swappable mechanical switches.',
             price: '$249.99',
-            image: '/src/assets/images/azoth.png',
+            image: '/images/azoth.png',
             badge: 'Keyboard',
             specs: {
               'LAYOUT': '75% Compact',
@@ -166,7 +166,7 @@
             name: 'Razer DeathAdder V3 Pro',
             description: 'Iconic ergonomic gaming mouse with Focus Pro 30K optical sensor and 90-hour battery life in an ultra-lightweight design.',
             price: '$149.99',
-            image: '/src/assets/images/v3pro.webp',
+            image: '/images/v3pro.webp',
             badge: 'Mouse',
             specs: {
               'SENSOR': 'Focus Pro 30K Optical',
@@ -181,7 +181,7 @@
             name: 'HyperX Cloud Alpha Wireless',
             description: 'Premium wireless gaming headset with up to 300 hours of battery life and DTS Spatial Audio for immersive gaming experiences.',
             price: '$199.99',
-            image: '/src/assets/images/cloudalpha.webp',
+            image: '/images/cloudalpha.webp',
             badge: 'Headset',
             specs: {
               'DRIVERS': '50mm Dual Chamber',
@@ -196,7 +196,7 @@
             name: 'Corsair K70 RGB TKL Champion',
             description: 'Tournament-ready tenkeyless mechanical keyboard with CORSAIR OPX optical-mechanical switches and 8,000Hz polling rate.',
             price: '$169.99',
-            image: '/src/assets/images/k70.webp',
+            image: '/images/k70.webp',
             badge: 'Keyboard',
             specs: {
               'LAYOUT': 'Tenkeyless (TKL)',
@@ -211,7 +211,7 @@
             name: 'Logitech G733 LIGHTSPEED',
             description: 'Colorful wireless gaming headset with suspension headband, customizable RGB lighting, and advanced microphone technology.',
             price: '$149.99',
-            image: '/src/assets/images/g733.webp',
+            image: '/images/g733.webp',
             badge: 'Headset',
             specs: {
               'DRIVERS': 'PRO-G 40mm',
@@ -224,12 +224,12 @@
           }
         ],
         brands: [
-          { name: 'Logitech', image: '/src/assets/images/logitech-gaming-2.webp' },
-          { name: 'Razer', image: '/src/assets/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
-          { name: 'ASUS', image: '/src/assets/images/ASUS logo white.webp' },
-          { name: 'HyperX', image: '/src/assets/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
-          { name: 'Corsair', image: '/src/assets/images/CORSAIRLogo2020_stack_W.webp' },
-          { name: 'SteelSeries', image: '/src/assets/images/steelseries.png' }
+          { name: 'Logitech', image: '/images/logitech-gaming-2.webp' },
+          { name: 'Razer', image: '/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
+          { name: 'ASUS', image: '/images/ASUS logo white.webp' },
+          { name: 'HyperX', image: '/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
+          { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' },
+          { name: 'SteelSeries', image: '/images/steelseries.png' }
         ],
         items: {
           'Keyboards': 'keyboards.html',

@@ -4,7 +4,7 @@
     <!-- Navbar -->
     <header class="navbar">
       <div class="logo">
-        <img src="/src/assets/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" class="logo-img">
+        <img src="/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" class="logo-img">
       </div>
       <nav>
         <div class="nav-item">
@@ -112,7 +112,7 @@ export default {
         {
           name: 'Ultimate Flagship Gaming Laptop',
           description: 'Experience gaming perfection with our flagship build featuring the latest RTX 4090 and Intel Core i9-13900K. Perfect for 4K gaming and content creation.',
-          image: '/src/assets/images/beast.webp',
+          image: '/images/beast.webp',
           badge: 'Gaming PC',
           price: '$2999.99',
           specs: {
@@ -128,7 +128,7 @@ export default {
         {
           name: 'RTX 4090 Gaming Laptop',
           description: 'The most powerful consumer graphics card ever made. Features DLSS 3.0, ray tracing, and unmatched 4K gaming performance.',
-          image: '/src/assets/images/4090.png',
+          image: '/images/4090.png',
           badge: 'Component',
           price: '$1599.99',
           specs: {
@@ -143,7 +143,7 @@ export default {
         {
           name: 'Mid-Range Gaming Laptop',
           description: 'Perfect balance of performance and value. Great for 1440p gaming and streaming.',
-          image: '/src/assets/images/mid.png',
+          image: '/images/mid.png',
           badge: 'Gaming PC',
           price: '$1499.99',
           specs: {
@@ -159,7 +159,7 @@ export default {
         {
           name: 'Mid Range Laptop',
           description: 'High-performance multi-core processor for gaming and productivity.',
-          image: '/src/assets/images/vivobook.png',
+          image: '/images/vivobook.png',
           badge: 'Component',
           price: '$349.99',
           specs: {
@@ -173,11 +173,11 @@ export default {
         }
       ],
       brands: [
-        { name: 'Logitech', image: '/src/assets/images/logitech-gaming-2.webp' },
-        { name: 'Razer', image: '/src/assets/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
-        { name: 'ASUS', image: '/src/assets/images/ASUS logo white.webp' },
-        { name: 'HyperX', image: '/src/assets/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
-        { name: 'Corsair', image: '/src/assets/images/CORSAIRLogo2020_stack_W.webp' }
+        { name: 'Logitech', image: '/images/logitech-gaming-2.webp' },
+        { name: 'Razer', image: '/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
+        { name: 'ASUS', image: '/images/ASUS logo white.webp' },
+        { name: 'HyperX', image: '/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
+        { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' }
       ],
       items: {
         'Graphics Cards': 'graphics-cards.html',

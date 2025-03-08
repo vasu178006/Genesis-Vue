@@ -3,7 +3,7 @@
       <div>
         <header class="navbar">
           <div class="logo">
-            <img src="/src/assets/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;" />
+            <img src="/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;" />
           </div>
           <nav>
         <div class="nav-item">
@@ -106,7 +106,7 @@
             name: 'ASUS ROG Swift OLED PG27AQDM',
             description: 'Premium 27-inch OLED gaming monitor with lightning-fast response time and vibrant colors for immersive gaming.',
             price: '$899.99',
-            image: '/src/assets/images/rogswift.webp',
+            image: '/images/rogswift.webp',
             badge: 'Monitor',
             specs: {
               'PANEL': '27" OLED',
@@ -121,7 +121,7 @@
             name: 'Samsung Odyssey G9 G95NC',
             description: 'Ultra-wide 49-inch curved OLED gaming monitor with Dual QHD resolution for panoramic immersion.',
             price: '$1,799.99',
-            image: '/src/assets/images/odyssey.webp',
+            image: '/images/odyssey.webp',
             badge: 'Monitor',
             specs: {
               'PANEL': '49" OLED Curved',
@@ -136,7 +136,7 @@
             name: 'Shure SM7B',
             description: 'Professional dynamic microphone with smooth, flat frequency response for broadcasting, podcasting, and studio recording.',
             price: '$399.99',
-            image: '/src/assets/images/shure.webp',
+            image: '/images/shure.webp',
             badge: 'Microphone',
             specs: {
               'TYPE': 'Dynamic',
@@ -151,7 +151,7 @@
             name: 'HyperX QuadCast S',
             description: 'USB condenser gaming microphone with customizable RGB lighting and built-in anti-vibration shock mount.',
             price: '$159.99',
-            image: '/src/assets/images/quadcast.webp',
+            image: '/images/quadcast.webp',
             badge: 'Microphone',
             specs: {
               'TYPE': 'Condenser',
@@ -166,7 +166,7 @@
             name: 'LG UltraGear 27GR95QE',
             description: 'Fast 27-inch OLED gaming monitor with 240Hz refresh rate and ultra-low response time for competitive gaming.',
             price: '$799.99',
-            image: '/src/assets/images/ug.webp',
+            image: '/images/ug.webp',
             badge: 'Monitor',
             specs: {
               'PANEL': '27" OLED',
@@ -181,7 +181,7 @@
             name: 'Logitech Brio 4K Pro',
             description: 'Ultra HD webcam with 4K resolution, HDR, and advanced auto-focus for crystal-clear video streaming and conferencing.',
             price: '$199.99',
-            image: '/src/assets/images/brio.webp',
+            image: '/images/brio.webp',
             badge: 'Webcam',
             specs: {
               'RESOLUTION': '4K Ultra HD (4096 x 2160)',
@@ -196,7 +196,7 @@
             name: 'Elgato Wave:3',
             description: 'Premium USB condenser microphone with digital mixer and proprietary anti-distortion technology for content creators.',
             price: '$149.99',
-            image: '/src/assets/images/elgato.webp',
+            image: '/images/elgato.webp',
             badge: 'Microphone',
             specs: {
               'TYPE': 'Condenser',
@@ -211,7 +211,7 @@
             name: 'Razer Kiyo Pro',
             description: 'High-performance webcam with adaptive light sensor and uncompressed 1080p 60FPS video for professional streaming.',
             price: '$179.99',
-            image: '/src/assets/images/kiyo.webp',
+            image: '/images/kiyo.webp',
             badge: 'Webcam',
             specs: {
               'RESOLUTION': 'Full HD 1080p',
@@ -224,12 +224,12 @@
           }
         ],
         brands: [
-          { name: 'ASUS', image: '/src/assets/images/asus.webp' },
-          { name: 'Samsung', image: '/src/assets/images/samsung.webp' },
-          { name: 'LG', image: '/src/assets/images/lg.webp' },
-          { name: 'Logitech', image: '/src/assets/images/logitech-gaming-2.webp' },
-          { name: 'Shure', image: '/src/assets/images/shure2.webp' },
-          { name: 'Razer', image: '/src/assets/images/razer-logo-83F59A22CB-seeklogo.com.webp' }
+          { name: 'ASUS', image: '/images/asus.webp' },
+          { name: 'Samsung', image: '/images/samsung.webp' },
+          { name: 'LG', image: '/images/lg.webp' },
+          { name: 'Logitech', image: '/images/logitech-gaming-2.webp' },
+          { name: 'Shure', image: '/images/shure2.webp' },
+          { name: 'Razer', image: '/images/razer-logo-83F59A22CB-seeklogo.com.webp' }
         ],
         items: {
           'Monitors': 'monitors.html',

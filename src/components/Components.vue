@@ -3,7 +3,7 @@
   <div>
     <header class="navbar">
       <div class="logo">
-        <img src="/src/assets/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;" />
+        <img src="/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;" />
       </div>
       <nav>
         <div class="nav-item">
@@ -111,7 +111,7 @@ export default {
           name: 'NVIDIA RTX 4090',
           description: 'The most powerful consumer graphics card ever made. Features DLSS 3.0, ray tracing, and unmatched 4K gaming performance.',
           price: '$1,600.00',
-          image: '/src/assets/images/geforce_rtx_4090_graphics_card_available_october_12.webp',
+          image: '/images/geforce_rtx_4090_graphics_card_available_october_12.webp',
           badge: 'Graphics Card',
           specs: {
             'MEMORY': '24GB GDDR6X',
@@ -126,7 +126,7 @@ export default {
           name: 'Intel Core i9-13900K',
           description: 'High-performance processor for gaming and content creation with 24 cores and up to 5.8GHz boost clock.',
           price: '$599.99',
-          image: '/src/assets/images/i9 13900k.webp',
+          image: '/images/i9 13900k.webp',
           badge: 'Processor',
           specs: {
             'CORES/THREADS': '24 Cores / 32 Threads',
@@ -141,7 +141,7 @@ export default {
           name: 'ASUS ROG Strix Z790',
           description: 'Premium motherboard for Intel 12th and 13th gen processors with excellent VRM and connectivity options.',
           price: '$399.99',
-          image: '/src/assets/images/z790e.png',
+          image: '/images/z790e.png',
           badge: 'Motherboard',
           specs: {
             'CHIPSET': 'Intel Z790',
@@ -156,7 +156,7 @@ export default {
           name: 'G.Skill Trident Z5 32GB',
           description: 'High-performance DDR5 memory kit with RGB lighting and excellent overclocking potential.',
           price: '$199.99',
-          image: '/src/assets/images/g skill trident z.webp',
+          image: '/images/g skill trident z.webp',
           badge: 'Memory',
           specs: {
             'CAPACITY': '32GB (2x16GB)',
@@ -171,7 +171,7 @@ export default {
           name: 'NVIDIA RTX 5070',
           description: 'Next-generation mid-range graphics card with exceptional 4K gaming capability. Features enhanced DLSS 4.0, advanced ray tracing, and excellent power efficiency.',
           price: '$649.99',
-          image: '/src/assets/images/rtx5070.webp',
+          image: '/src/a/images/rtx5070.webp',
           badge: 'Graphics Card',
           specs: {
           'MEMORY': '16GB GDDR7',
@@ -186,7 +186,7 @@ export default {
           name: 'AMD Ryzen 9 7950X3D',
 description: 'Ultimate gaming and content creation processor with 3D V-Cache technology, offering 16 cores and up to 5.7GHz boost clock.',
 price: '$699.99',
-image: '/src/assets/images/ryzen9.webp',
+image: '/images/ryzen9.webp',
 badge: 'Processor',
 specs: {
   'CORES/THREADS': '16 Cores / 32 Threads',
@@ -201,7 +201,7 @@ specs: {
           name: 'GIGABYTE AORUS Z790 Master',
 description: 'High-end motherboard for Intel 12th and 13th gen processors featuring robust power delivery, extensive connectivity, and premium thermal design.',
 price: '$459.99',
-image: '/src/assets/images/gigaz790.webp',
+image: '/images/gigaz790.webp',
 badge: 'Motherboard',
 specs: {
   'CHIPSET': 'Intel Z790',
@@ -216,7 +216,7 @@ specs: {
           name: 'Corsair Vengeance RGB Pro 32GB',
           description: 'Premium DDR5 memory with dynamic multi-zone RGB lighting and reliable performance for gaming and content creation.',
             price: '$189.99',
-            image: '/src/assets/images/venegance.webp',
+            image: '/images/venegance.webp',
             badge: 'Memory',
             specs: {
               'CAPACITY': '32GB (2x16GB)',
@@ -229,11 +229,11 @@ specs: {
       }
       ],
       brands: [
-        { name: 'Logitech', image: '/src/assets/images/logitech-gaming-2.webp' },
-        { name: 'Razer', image: '/src/assets/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
-        { name: 'ASUS', image: '/src/assets/images/ASUS logo white.webp' },
-        { name: 'HyperX', image: '/src/assets/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
-        { name: 'Corsair', image: '/src/assets/images/CORSAIRLogo2020_stack_W.webp' }
+        { name: 'Logitech', image: '/images/logitech-gaming-2.webp' },
+        { name: 'Razer', image: '/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
+        { name: 'ASUS', image: '/images/ASUS logo white.webp' },
+        { name: 'HyperX', image: '/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
+        { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' }
       ],
       items: {
         'Graphics Cards': 'graphics-cards.html',

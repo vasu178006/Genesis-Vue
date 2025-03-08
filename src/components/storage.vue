@@ -3,7 +3,7 @@
       <div>
         <header class="navbar">
           <div class="logo">
-            <img src="/src/assets/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;" />
+            <img src="/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;" />
           </div>
           <nav>
         <div class="nav-item">
@@ -106,7 +106,7 @@
             name: 'Samsung 990 PRO',
             description: 'Ultra-fast PCIe 5.0 NVMe SSD designed for gaming and high-end computing with exceptional speed and reliability.',
             price: '$229.99',
-            image: '/src/assets/images/990pro.webp',
+            image: '/images/990pro.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '2TB',
@@ -121,7 +121,7 @@
             name: 'WD_BLACK SN850X',
             description: 'High-performance internal SSD optimized for gaming with Game Mode 2.0 and advanced thermal management.',
             price: '$179.99',
-            image: '/src/assets/images/sn850x.webp',
+            image: '/images/sn850x.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '1TB',
@@ -136,7 +136,7 @@
             name: 'Crucial T700',
             description: 'Cutting-edge PCIe 5.0 NVMe SSD with enthusiast-grade performance for next-gen gaming and content creation.',
             price: '$249.99',
-            image: '/src/assets/images/t700.webp',
+            image: '/images/t700.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '2TB',
@@ -151,7 +151,7 @@
             name: 'Seagate FireCuda Gaming Hub',
             description: 'External HDD with customizable RGB lighting, USB hub functionality, and massive storage for game libraries.',
             price: '$189.99',
-            image: '/src/assets/images/ghub1.png',
+            image: '/images/ghub1.png',
             badge: 'External',
             specs: {
               'CAPACITY': '8TB',
@@ -166,7 +166,7 @@
             name: 'Kingston FURY Renegade',
             description: 'Extreme-performance PCIe 4.0 SSD with low-profile graphene heatsink for uncompromising gaming performance.',
             price: '$159.99',
-            image: '/src/assets/images/renegade.webp',
+            image: '/images/renegade.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '1TB',
@@ -181,7 +181,7 @@
             name: 'Samsung T9 Portable SSD',
             description: 'Rugged external SSD with exceptional speeds and drop resistance for gamers and content creators on the go.',
             price: '$209.99',
-            image: '/src/assets/images/t9.webp',
+            image: '/images/t9.webp',
             badge: 'External',
             specs: {
               'CAPACITY': '2TB',
@@ -196,7 +196,7 @@
             name: 'Seagate FireCuda 530',
             description: 'High-performance internal SSD with heatsink designed specifically for PS5 and PC gaming setups.',
             price: '$199.99',
-            image: '/src/assets/images/fire530.webp',
+            image: '/images/fire530.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '1TB',
@@ -211,7 +211,7 @@
             name: 'WD_BLACK P40 Game Drive',
             description: 'Portable SSD with customizable RGB lighting, shock-resistant design, and optimized for console and PC gaming.',
             price: '$139.99',
-            image: '/src/assets/images/p40.webp',
+            image: '/images/p40.webp',
             badge: 'External',
             specs: {
               'CAPACITY': '1TB',
@@ -224,12 +224,12 @@
           }
         ],
         brands: [
-          { name: 'Samsung', image: '/src/assets/images/samsung.webp' },
-          { name: 'WD_BLACK', image: '/src/assets/images/wd.webp' },
-          { name: 'Seagate', image: '/src/assets/images/seagate-logo.webp' },
-          { name: 'Crucial', image: '/src/assets/images/crucial.webp' },
-          { name: 'Kingston', image: '/src/assets/images/kingston1.webp' },
-          { name: 'Corsair', image: '/src/assets/images/CORSAIRLogo2020_stack_W.webp' }
+          { name: 'Samsung', image: '/images/samsung.webp' },
+          { name: 'WD_BLACK', image: '/images/wd.webp' },
+          { name: 'Seagate', image: '/images/seagate-logo.webp' },
+          { name: 'Crucial', image: '/images/crucial.webp' },
+          { name: 'Kingston', image: '/images/kingston1.webp' },
+          { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' }
         ],
         items: {
           'SSDs': 'ssds.html',

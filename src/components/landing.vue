@@ -3,7 +3,7 @@
    <div class="main-container">
     <header class="navbar">
       <div class="logo">
-        <img src="/src/assets/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;">
+        <img src="/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;">
       </div>
       <nav class="main-nav">
         <div class="nav-item">
@@ -91,53 +91,54 @@ export default {
       searchQuery: '',
       showResults: false,
       items: {
-        'Graphics Cards': 'graphics-cards.html',
-        'Processors': 'processor.html',
-        'Motherboards': 'motherboards.html',
-        'Power Supplies': 'power-supplies.html',
-        'Gaming Mice': 'gaming-mice.html',
-        'Gaming Keyboards': 'gaming-keyboards.html',
-        'Gaming Headsets': 'gaming-headsets.html',
-        'Controllers': 'controllers.html',
-        'Gaming Laptops': 'laptops.html',
-        'Ultrabooks': 'ultrabooks.html',
-        'Workstation Laptops': 'workstation-laptops.html',
-        'SSD': 'ssd.html',
-        'HDD': 'hdd.html',
-        'External Drives': 'external-drives.html',
-        'Monitors': 'monitors.html',
-        'Keyboards': 'keyboards.html',
-        'Mice': 'mice.html',
-        'Headsets': 'headsets.html'
+        'Graphics Cards': '/components',
+        'Processors': '/Components',
+        'Motherboards': '/Components',
+        'Ram':'/Components',
+        'Gaming Mice': '/gears',
+        'Gaming Keyboards': '/gears',
+        'Gaming Headsets': '/gears',
+        'Gaming Laptops': '/laptops',
+        'Ultrabooks': '/laptops',
+        'Workstation Laptops': '/laptops',
+        'SSD': '/storage',
+        'HDD': '/storage',
+        'External Drives': '/storage',
+        'Monitors': '/peripherals',
+        'Keyboards': '/gears',
+        'Mice': '/gears',
+        'Headsets': '/gears',
+        'Webcam':'/peripherals',
+        'Microphone':'/peripherals',
       },
       categories: [
         {
           title: 'Gaming Mice',
           description: 'Find the perfect mouse for your play style',
-          image: '/src/assets/images/Landing mouse pic.png'
+          image: '/images/Landing mouse pic.png'
         },
         {
           title: 'Gaming Headsets',
           description: 'Hear every footstep and explosion with crystal clear audio',
-          image: '/src/assets/images/landing headset pic.png'
+          image: '/images/landing headset pic.png'
         },
         {
           title: 'Gaming Keyboards',
           description: 'Get the competitive edge with responsive mechanical switches',
-          image: '/src/assets/images/Landing keyboard pic.png'
+          image: '/images/Landing keyboard pic.png'
         },
         {
           title: 'Graphics Cards',
           description: 'Experience lifelike graphics and smooth gameplay',
-          image: '/src/assets/images/pd.webp'
+          image: '/images/pd.webp'
         }
       ],
       brands: [
-        { name: 'Logitech', image: '/src/assets/images/logitech-gaming-2.webp' },
-        { name: 'Razer', image: '/src/assets/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
-        { name: 'ASUS', image: '/src/assets/images/asus.webp' },
-        { name: 'HyperX', image: '/src/assets/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
-        { name: 'Corsair', image: '/src/assets/images/CORSAIRLogo2020_stack_W.webp' }
+        { name: 'Logitech', image: '/images/logitech-gaming-2.webp' },
+        { name: 'Razer', image: '/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
+        { name: 'ASUS', image: '/images/asus.webp' },
+        { name: 'HyperX', image: '/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
+        { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' }
       ]
     };
   },
@@ -156,11 +157,12 @@ export default {
 },
 methods: {
   handleSearch() {
-    this.showResults = this.searchQuery.length > 0;
-  },
-  navigateTo(url) {
-    window.location.href = url;
-  },
+      this.showResults = this.searchQuery.length > 0;
+    },
+    navigateTo(url) {
+      window.location.href = url;
+    },
+    
   addToCart(item) {
     try {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
