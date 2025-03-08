@@ -10,16 +10,16 @@
           <Router-link to="/Components">Components</Router-link>
         </div>
         <div class="nav-item">
-          <a href="#">Gaming Gear</a>
+          <Router-link to="/gears">Gears</Router-link>
         </div>
         <div class="nav-item">
          <RouterLink to="/laptops">Laptops</RouterLink>
         </div>
         <div class="nav-item">
-          <a href="#">Storage</a>
+          <RouterLink to="/storage">Storage</RouterLink>
         </div>
         <div class="nav-item">
-          <a href="#">Peripherals</a>
+          <RouterLink to="/peripherals">Peripherals</RouterLink>
         </div>
       </nav>
       <div class="icons">

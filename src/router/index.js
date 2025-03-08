@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import LandingPage from '../components/landing.vue'
 import LoginPage from '../components/loginpage.vue'
 import AboutView from '../views/AboutView.vue'
 import ComponentsPage from '../components/Components.vue'
 import Laptops from '../components/laptops.vue'
 import Cart from '../components/cart.vue'
+import Gear from '../components/gears.vue'
+import Storage from '../components/storage.vue'
+import Peripherals from '../components/peripherals.vue'
 import { auth } from '../firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 
@@ -86,14 +88,48 @@ const routes = [
   {
     path: '/cart',
     name: 'cart',
-    component: Cart, // Fixed: Use same casing as import (Cart)
+    component: Cart,
     beforeEnter: requireAuth,
     meta: {
-      title: 'Shopping Cart', // Fixed: Corrected the title
+      title: 'Shopping Cart',
       requiresAuth: true,
       category: 'shop'
     }
   },
+  {
+    path: '/gears',
+    name: 'gears',
+    component: Gear, // Fixed: Changed Gears to Gear to match import
+    beforeEnter: requireAuth,
+    meta: {
+      title: 'Gaming Gear', // Fixed: Corrected the title from "Shopping Cart"
+      requiresAuth: true,
+      category: 'shop'
+    }
+  },
+  {
+    path: '/storage',
+    name: 'storage',
+    component: Storage, // Fixed: Changed Gears to Gear to match import
+    beforeEnter: requireAuth,
+    meta: {
+      title: 'Storage', // Fixed: Corrected the title from "Shopping Cart"
+      requiresAuth: true,
+      category: 'shop'
+    }
+  },
+  {
+    path: '/peripherals',
+    name: 'peripherals',
+    component: Peripherals, // Fixed: Changed Gears to Gear to match import
+    beforeEnter: requireAuth,
+    meta: {
+      title: 'Peripherals', // Fixed: Corrected the title from "Shopping Cart"
+      requiresAuth: true,
+      category: 'shop'
+    }
+  },
+  
   // Catch-all route
   {
     path: '/:pathMatch(.*)*',

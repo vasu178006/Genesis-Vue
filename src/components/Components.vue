@@ -1,4 +1,5 @@
 <template>
+  <div class="bodyfont">
   <div>
     <header class="navbar">
       <div class="logo">
@@ -38,7 +39,7 @@
         <source src="/src/assets/video/13057075_3840_2160_24fps.mp4" type="video/mp4" />
       </video>
       <div class="hero-text">
-        <h1>Build Your Dream PC</h1>
+        <h1 class="gradient-text"> Your Dream PC</h1>
         <p>Discover the best components to power up your custom PC.</p>
       </div>
     </section>
@@ -91,6 +92,7 @@
     <footer>
       <p>&copy; 2025 Genesis. All rights reserved.</p>
     </footer>
+  </div>
   </div>
 </template>
 
@@ -312,6 +314,17 @@ export default {
 </script>;
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap');
+.bodyfont{
+  font-family:'Aldrich',sans-serif;
+}
+.gradient-text {
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
 body {
   margin: 0;
   padding: 0;
@@ -511,7 +524,7 @@ nav {
 
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 2rem;
 }
 
