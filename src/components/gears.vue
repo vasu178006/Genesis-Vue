@@ -7,20 +7,23 @@
         </div>
         <nav>
           <div class="nav-item">
-            <Router-link to="/landing">Home</Router-link>
-          </div>
-          <div class="nav-item">
-            <a href="#">Gaming Gear</a>
-          </div>
-          <div class="nav-item">
-            <a href="#">Laptops</a>
-          </div>
-          <div class="nav-item">
-            <a href="#">Storage</a>
-          </div>
-          <div class="nav-item">
-            <a href="#">Peripherals</a>
-          </div>
+          <Router-link to="/landing">Home</Router-link>
+        </div>
+        <div class="nav-item">
+          <Router-link to="/gears">Gears</Router-link>
+        </div>
+        <div class="nav-item">
+         <RouterLink to="/laptops">Laptops</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/storage">Storage</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/peripherals">Peripherals</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/about">About</RouterLink>
+        </div>
         </nav>
         <div class="icons">
           <div class="search-bar">
@@ -28,8 +31,8 @@
             <div v-if="searchResults.length" class="search-results">
               <div v-for="result in searchResults" :key="result" @click="navigateTo(result)">{{ result }}</div>
             </div>
-          <router-link to="/cart" class="cart-button">🛒</router-link>
-            <button>👤</button>
+            <router-link to="/cart" class="cart-button">🛒</router-link>
+            <RouterLink to="/user">👤</RouterLink>
           </div>
         </div>
       </header>
@@ -103,7 +106,7 @@
             name: 'Razer Huntsman V3 Pro',
             description: 'Premium optical mechanical gaming keyboard with customizable actuation points and Gen-3 optical switches for lightning-fast response.',
             price: '$249.99',
-            image: '/src/assets/images/razer_huntsman.webp',
+            image: '/src/assets/images/huntsman.webp',
             badge: 'Keyboard',
             specs: {
               'SWITCHES': 'Optical Gen-3',
@@ -118,7 +121,7 @@
             name: 'Logitech G Pro X Superlight 2',
             description: 'Ultra-lightweight wireless gaming mouse with HERO 2 sensor and zero-compromise performance for professional esports players.',
             price: '$159.99',
-            image: '/src/assets/images/logitech_superlight.webp',
+            image: '/src/assets/images/gpro.png',
             badge: 'Mouse',
             specs: {
               'SENSOR': 'HERO 2 32K DPI',
@@ -133,7 +136,7 @@
             name: 'SteelSeries Arctis Nova Pro',
             description: 'Premium wireless gaming headset with multi-system connectivity, active noise cancellation, and hot-swappable batteries.',
             price: '$349.99',
-            image: '/src/assets/images/arctis_nova_pro.webp',
+            image: '/src/assets/images/novapro.webp',
             badge: 'Headset',
             specs: {
               'DRIVERS': '40mm High-Fidelity',
@@ -148,7 +151,7 @@
             name: 'ASUS ROG Azoth',
             description: 'Enthusiast-grade wireless gaming keyboard with tri-mode connectivity, OLED display, and hot-swappable mechanical switches.',
             price: '$249.99',
-            image: '/src/assets/images/asus_azoth.webp',
+            image: '/src/assets/images/azoth.png',
             badge: 'Keyboard',
             specs: {
               'LAYOUT': '75% Compact',
@@ -163,7 +166,7 @@
             name: 'Razer DeathAdder V3 Pro',
             description: 'Iconic ergonomic gaming mouse with Focus Pro 30K optical sensor and 90-hour battery life in an ultra-lightweight design.',
             price: '$149.99',
-            image: '/src/assets/images/razer_deathadder.webp',
+            image: '/src/assets/images/v3pro.webp',
             badge: 'Mouse',
             specs: {
               'SENSOR': 'Focus Pro 30K Optical',
@@ -178,7 +181,7 @@
             name: 'HyperX Cloud Alpha Wireless',
             description: 'Premium wireless gaming headset with up to 300 hours of battery life and DTS Spatial Audio for immersive gaming experiences.',
             price: '$199.99',
-            image: '/src/assets/images/hyperx_cloud_alpha.webp',
+            image: '/src/assets/images/cloudalpha.webp',
             badge: 'Headset',
             specs: {
               'DRIVERS': '50mm Dual Chamber',
@@ -193,7 +196,7 @@
             name: 'Corsair K70 RGB TKL Champion',
             description: 'Tournament-ready tenkeyless mechanical keyboard with CORSAIR OPX optical-mechanical switches and 8,000Hz polling rate.',
             price: '$169.99',
-            image: '/src/assets/images/corsair_k70.webp',
+            image: '/src/assets/images/k70.webp',
             badge: 'Keyboard',
             specs: {
               'LAYOUT': 'Tenkeyless (TKL)',
@@ -208,7 +211,7 @@
             name: 'Logitech G733 LIGHTSPEED',
             description: 'Colorful wireless gaming headset with suspension headband, customizable RGB lighting, and advanced microphone technology.',
             price: '$149.99',
-            image: '/src/assets/images/logitech_g733.webp',
+            image: '/src/assets/images/g733.webp',
             badge: 'Headset',
             specs: {
               'DRIVERS': 'PRO-G 40mm',
@@ -226,7 +229,7 @@
           { name: 'ASUS', image: '/src/assets/images/ASUS logo white.webp' },
           { name: 'HyperX', image: '/src/assets/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
           { name: 'Corsair', image: '/src/assets/images/CORSAIRLogo2020_stack_W.webp' },
-          { name: 'SteelSeries', image: '/src/assets/images/steelseries_logo.webp' }
+          { name: 'SteelSeries', image: '/src/assets/images/steelseries.png' }
         ],
         items: {
           'Keyboards': 'keyboards.html',

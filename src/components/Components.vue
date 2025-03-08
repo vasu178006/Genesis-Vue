@@ -10,16 +10,19 @@
           <Router-link to="/landing">Home</Router-link>
         </div>
         <div class="nav-item">
-          <a href="#">Gaming Gear</a>
+          <Router-link to="/gears">Gears</Router-link>
         </div>
         <div class="nav-item">
-          <a href="#">Laptops</a>
+         <RouterLink to="/laptops">Laptops</RouterLink>
         </div>
         <div class="nav-item">
-          <a href="#">Storage</a>
+          <RouterLink to="/storage">Storage</RouterLink>
         </div>
         <div class="nav-item">
-          <a href="#">Peripherals</a>
+          <RouterLink to="/peripherals">Peripherals</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/about">About</RouterLink>
         </div>
       </nav>
       <div class="icons">
@@ -28,12 +31,11 @@
           <div v-if="searchResults.length" class="search-results">
             <div v-for="result in searchResults" :key="result" @click="navigateTo(result)">{{ result }}</div>
           </div>
-        <router-link to="/cart" class="cart-button">🛒</router-link>
-          <button>👤</button>
+          <router-link to="/cart" class="cart-button">🛒</router-link>
+          <RouterLink to="/user">👤</RouterLink>
         </div>
       </div>
     </header>
-
     <section class="hero">
       <video width="200px" autoplay loop muted>
         <source src="/src/assets/video/13057075_3840_2160_24fps.mp4" type="video/mp4" />
@@ -108,7 +110,7 @@ export default {
         {
           name: 'NVIDIA RTX 4090',
           description: 'The most powerful consumer graphics card ever made. Features DLSS 3.0, ray tracing, and unmatched 4K gaming performance.',
-          price: '$1,999.99',
+          price: '$1,600.00',
           image: '/src/assets/images/geforce_rtx_4090_graphics_card_available_october_12.webp',
           badge: 'Graphics Card',
           specs: {
@@ -166,65 +168,65 @@ export default {
           }
         },
         {
-          name: 'NVIDIA RTX 4090',
-          description: 'The most powerful consumer graphics card ever made. Features DLSS 3.0, ray tracing, and unmatched 4K gaming performance.',
-          price: '$1,999.99',
-          image: '/src/assets/images/geforce_rtx_4090_graphics_card_available_october_12.webp',
+          name: 'NVIDIA RTX 5070',
+          description: 'Next-generation mid-range graphics card with exceptional 4K gaming capability. Features enhanced DLSS 4.0, advanced ray tracing, and excellent power efficiency.',
+          price: '$649.99',
+          image: '/src/assets/images/rtx5070.webp',
           badge: 'Graphics Card',
           specs: {
-            'MEMORY': '24GB GDDR6X',
-            'BOOST CLOCK': '2.52 GHz',
-            'CUDA CORES': '16384',
-            'RAY TRACING': '3rd Gen RT Cores',
-            'DLSS': 'DLSS 3.0 Support',
-            'POWER': '450W TDP'
-          }
+          'MEMORY': '16GB GDDR7',
+          'BOOST CLOCK': '2.8 GHz',
+          'CUDA CORES': '9216',
+          'RAY TRACING': '4th Gen RT Cores',
+          'DLSS': 'DLSS 4.0 Support',
+          'POWER': '250W TDP'
+            }
+          },
+        {
+          name: 'AMD Ryzen 9 7950X3D',
+description: 'Ultimate gaming and content creation processor with 3D V-Cache technology, offering 16 cores and up to 5.7GHz boost clock.',
+price: '$699.99',
+image: '/src/assets/images/ryzen9.webp',
+badge: 'Processor',
+specs: {
+  'CORES/THREADS': '16 Cores / 32 Threads',
+  'BASE CLOCK': '4.2 GHz',
+  'BOOST CLOCK': '5.7 GHz',
+  'CACHE': '128MB 3D V-Cache',
+  'TDP': '120W',
+  'SOCKET': 'AM5'
+}
         },
         {
-          name: 'Intel Core i9-13900K',
-          description: 'High-performance processor for gaming and content creation with 24 cores and up to 5.8GHz boost clock.',
-          price: '$599.99',
-          image: '/src/assets/images/i9 13900k.webp',
-          badge: 'Processor',
-          specs: {
-            'CORES/THREADS': '24 Cores / 32 Threads',
-            'BASE CLOCK': '3.0 GHz',
-            'BOOST CLOCK': '5.8 GHz',
-            'CACHE': '36MB L3 Cache',
-            'TDP': '125W',
-            'SOCKET': 'LGA 1700'
-          }
+          name: 'GIGABYTE AORUS Z790 Master',
+description: 'High-end motherboard for Intel 12th and 13th gen processors featuring robust power delivery, extensive connectivity, and premium thermal design.',
+price: '$459.99',
+image: '/src/assets/images/gigaz790.webp',
+badge: 'Motherboard',
+specs: {
+  'CHIPSET': 'Intel Z790',
+  'SOCKET': 'LGA 1700',
+  'MEMORY': 'DDR5, up to 8000MHz OC',
+  'EXPANSION': 'PCIe 5.0 x16, PCIe 4.0 x16',
+  'STORAGE': '4x M.2 Slots, 6x SATA',
+  'NETWORKING': '10Gb + 2.5Gb Ethernet, WiFi 6E'
+}
         },
         {
-          name: 'ASUS ROG Strix Z790',
-          description: 'Premium motherboard for Intel 12th and 13th gen processors with excellent VRM and connectivity options.',
-          price: '$399.99',
-          image: '/src/assets/images/z790e.png',
-          badge: 'Motherboard',
-          specs: {
-            'CHIPSET': 'Intel Z790',
-            'SOCKET': 'LGA 1700',
-            'MEMORY': 'DDR5, up to 7800MHz OC',
-            'EXPANSION': 'PCIe 5.0 x16, PCIe 4.0 x16',
-            'STORAGE': '5x M.2 Slots, 6x SATA',
-            'NETWORKING': '2.5Gb Ethernet, WiFi 6E'
-          }
-        },
-        {
-          name: 'G.Skill Trident Z5 32GB',
-          description: 'High-performance DDR5 memory kit with RGB lighting and excellent overclocking potential.',
-          price: '$199.99',
-          image: '/src/assets/images/g skill trident z.webp',
-          badge: 'Memory',
-          specs: {
-            'CAPACITY': '32GB (2x16GB)',
-            'SPEED': 'DDR5-6000MHz',
-            'TIMINGS': 'CL36-36-36-96',
-            'VOLTAGE': '1.35V',
-            'LIGHTING': 'RGB Customizable',
-            'PROFILE': 'XMP 3.0 Support'
-          }
+          name: 'Corsair Vengeance RGB Pro 32GB',
+          description: 'Premium DDR5 memory with dynamic multi-zone RGB lighting and reliable performance for gaming and content creation.',
+            price: '$189.99',
+            image: '/src/assets/images/venegance.webp',
+            badge: 'Memory',
+            specs: {
+              'CAPACITY': '32GB (2x16GB)',
+              'SPEED': 'DDR5-5600MHz',
+              'TIMINGS': 'CL36-36-36-76',
+              'VOLTAGE': '1.25V',
+              'LIGHTING': 'RGB iCUE Compatible',
+              'PROFILE': 'XMP 3.0 Support',
         }
+      }
       ],
       brands: [
         { name: 'Logitech', image: '/src/assets/images/logitech-gaming-2.webp' },

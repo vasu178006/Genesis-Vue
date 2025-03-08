@@ -49,7 +49,7 @@
         <div class="hero-text">
           <h1 class="gradient-text">Upgrade to RTX 4090</h1>
           <p>Get the latest 4090 graphics cards and boost your gaming experience to the next level.</p>
-          <button class="container">Shop Now</button>
+          <RouterLink to="/Components"><button class="container">Shop Now</button></RouterLink>
         </div>
       </div>
     </section>
@@ -57,7 +57,7 @@
     <section class="categories">
       <div class="categories-header">
         <h2 class="gradient-text">Featured Categories</h2>
-        <button class="container">Shop All</button>
+        <RouterLink to="/gears"><button class="container">Shop All</button></RouterLink>
       </div>
       <div class="category-list">
         <div class="package" v-for="(category, index) in categories" :key="index">
@@ -135,7 +135,7 @@ export default {
       brands: [
         { name: 'Logitech', image: '/src/assets/images/logitech-gaming-2.webp' },
         { name: 'Razer', image: '/src/assets/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
-        { name: 'ASUS', image: '/src/assets/images/ASUS logo white.webp' },
+        { name: 'ASUS', image: '/src/assets/images/asus.webp' },
         { name: 'HyperX', image: '/src/assets/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
         { name: 'Corsair', image: '/src/assets/images/CORSAIRLogo2020_stack_W.webp' }
       ]

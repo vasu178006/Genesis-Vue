@@ -1,4 +1,5 @@
 <template>
+  <div class="bodyfont">
   <div class="app-container">
     <!-- Navbar -->
     <header class="navbar">
@@ -6,11 +7,23 @@
         <img src="/src/assets/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" class="logo-img">
       </div>
       <nav>
-        <div v-for="(category, index) in categories" :key="index" class="nav-item">
-          <a href="#">{{ category.name }}</a>
-          <div class="dropdown">
-            <a v-for="(item, idx) in category.items" :key="idx" :href="item.link">{{ item.name }}</a>
-          </div>
+        <div class="nav-item">
+          <Router-link to="/landing">Home</Router-link>
+        </div>
+        <div class="nav-item">
+          <Router-link to="/gears">Gears</Router-link>
+        </div>
+        <div class="nav-item">
+         <RouterLink to="/laptops">Laptops</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/storage">Storage</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/peripherals">Peripherals</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/about">About</RouterLink>
         </div>
       </nav>
       <div class="icons">
@@ -26,8 +39,8 @@
               {{ item }}
             </div>
           </div>
-          <button @click="navigateTo('cart.html')" class="icon-btn">🛒</button>
-          <button class="icon-btn">👤</button>
+          <router-link to="/cart" class="cart-button">🛒</router-link>
+          <RouterLink to="/user">👤</RouterLink>
         </div>
       </div>
     </header>
@@ -38,7 +51,7 @@
         <source src="/src/assets/video/laptops.mp4" type="video/mp4" />
       </video>
       <div class="hero-text">
-        <h1>Powerful Laptops for Every Need</h1>
+        <h1 class="gradient-text">Powerful Laptops for Every Need</h1>
         <p>Find the perfect laptop for gaming, work, or everyday use.</p>
       </div>
     </section>
@@ -76,11 +89,15 @@
         </div>
       </div>
     </section>
-
+    <section class="brands">
+      <img v-for="(brand, index) in brands" :key="index" :src="brand.image" :alt="brand.name">
+    </section>
+    <br>
     <!-- Footer -->
     <footer>
       <p>&copy; 2025 Genesis. All rights reserved.</p>
     </footer>
+  </div>
   </div>
 </template>
 
@@ -91,55 +108,11 @@ export default {
       hoveredProduct: null,
       searchQuery: '',
       showResults: false,
-      categories: [
-        {
-          name: 'PC Components',
-          items: [
-            { name: 'Graphics Cards', link: 'graphics-cards.html' },
-            { name: 'Processors', link: 'processor.html' },
-            { name: 'Motherboards', link: 'motherboards.html' },
-            { name: 'Power Supplies', link: 'power-supplies.html' }
-          ]
-        },
-        {
-          name: 'Gaming Gear',
-          items: [
-            { name: 'Gaming Mice', link: 'gaming-mice.html' },
-            { name: 'Gaming Keyboards', link: 'gaming-keyboards.html' },
-            { name: 'Gaming Headsets', link: 'gaming-headsets.html' },
-            { name: 'Controllers', link: 'controllers.html' }
-          ]
-        },
-        {
-          name: 'Laptops',
-          items: [
-            { name: 'Gaming Laptops', link: 'laptops.html' },
-            { name: 'Ultrabooks', link: 'ultrabooks.html' },
-            { name: 'Workstation Laptops', link: 'workstation-laptops.html' }
-          ]
-        },
-        {
-          name: 'Storage',
-          items: [
-            { name: 'SSD', link: 'ssd.html' },
-            { name: 'HDD', link: 'hdd.html' },
-            { name: 'External Drives', link: 'external-drives.html' }
-          ]
-        },
-        {
-          name: 'Peripherals',
-          items: [
-            { name: 'Monitors', link: 'monitors.html' },
-            { name: 'Webcams', link: 'webcams.html' },
-            { name: 'Speakers', link: 'speakers.html' }
-          ]
-        }
-      ],
       products: [
         {
-          name: 'Ultimate Gaming Beast PC',
+          name: 'Ultimate Flagship Gaming Laptop',
           description: 'Experience gaming perfection with our flagship build featuring the latest RTX 4090 and Intel Core i9-13900K. Perfect for 4K gaming and content creation.',
-          image: '/images/gaming_pc_blue.webp',
+          image: '/src/assets/images/beast.webp',
           badge: 'Gaming PC',
           price: '$2999.99',
           specs: {
@@ -153,9 +126,9 @@ export default {
           }
         },
         {
-          name: 'RTX 4090 Gaming GPU',
+          name: 'RTX 4090 Gaming Laptop',
           description: 'The most powerful consumer graphics card ever made. Features DLSS 3.0, ray tracing, and unmatched 4K gaming performance.',
-          image: '/images/rtx_4090.webp',
+          image: '/src/assets/images/4090.png',
           badge: 'Component',
           price: '$1599.99',
           specs: {
@@ -168,9 +141,9 @@ export default {
           }
         },
         {
-          name: 'Mid-Range Gaming PC',
+          name: 'Mid-Range Gaming Laptop',
           description: 'Perfect balance of performance and value. Great for 1440p gaming and streaming.',
-          image: '/images/gaming_pc_mid.webp',
+          image: '/src/assets/images/mid.png',
           badge: 'Gaming PC',
           price: '$1499.99',
           specs: {
@@ -184,9 +157,9 @@ export default {
           }
         },
         {
-          name: 'AMD Ryzen 7 CPU',
+          name: 'Mid Range Laptop',
           description: 'High-performance multi-core processor for gaming and productivity.',
-          image: '/images/ryzen_cpu.webp',
+          image: '/src/assets/images/vivobook.png',
           badge: 'Component',
           price: '$349.99',
           specs: {
@@ -198,6 +171,13 @@ export default {
             'SOCKET': 'AM5'
           }
         }
+      ],
+      brands: [
+        { name: 'Logitech', image: '/src/assets/images/logitech-gaming-2.webp' },
+        { name: 'Razer', image: '/src/assets/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
+        { name: 'ASUS', image: '/src/assets/images/ASUS logo white.webp' },
+        { name: 'HyperX', image: '/src/assets/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
+        { name: 'Corsair', image: '/src/assets/images/CORSAIRLogo2020_stack_W.webp' }
       ],
       items: {
         'Graphics Cards': 'graphics-cards.html',
@@ -255,11 +235,14 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap');
+.bodyfont{
+  font-family:'Aldrich',sans-serif;
+}
 .app-container {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
   background-color: #0e0c11;
   color: white;
   min-height: 100vh;
@@ -294,6 +277,11 @@ export default {
   text-decoration: none;
   padding: 0.5rem;
 }
+.nav-item > a:hover {
+  background-color: #9c74c21a; /* Light purple color */
+  border-radius: 8px; /* Adding border radius */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
 
 .dropdown {
   display: none;
@@ -323,37 +311,79 @@ export default {
 }
 
 .search-bar {
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
+  gap: 10px;
 }
 
 .search-bar input {
-  padding: 0.5rem;
-  border-radius: 4px;
+  max-width: 150px;
+  background-color: #1a1a1a;
   border: none;
-  margin-right: 0.5rem;
+  padding: 8px 10px;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+  transition: box-shadow 0.3s ease, width 0.3s ease;
+}
+
+.search-bar input:focus {
+  width: 180px;
+  animation: rotateShadow 2s infinite linear;
+}
+
+@keyframes rotateShadow {
+  0% {
+    box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
+  }
+  25% {
+    box-shadow: -2px 2px 8px 1px #aa00ff, 2px -2px 8px 1px #3700ff;
+  }
+  50% {
+    box-shadow: 2px 2px 8px 1px #aa00ff, -2px -2px 8px 1px #3700ff;
+  }
+  75% {
+    box-shadow: 2px -2px 8px 1px #aa00ff, -2px 2px 8px 1px #3700ff;
+  }
+  100% {
+    box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
+  }
 }
 
 .search-results {
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: 40px;
+  right: 0;
   background: #18141d;
-  border-radius: 4px;
-  width: 100%;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 101;
+  border-radius: 8px;
+  z-index: 200;
+  width: 180px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-.search-result-item {
-  padding: 0.5rem;
+.search-results div {
+  padding: 0.5rem 1rem;
   cursor: pointer;
+  color: white;
+  transition: background 0.2s;
 }
 
-.search-result-item:hover {
+.search-results div:hover {
   background: #a855f7;
+}
+
+.search-bar button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.search-bar button:hover {
+  transform: scale(1.1);
 }
 
 .icon-btn {
@@ -363,6 +393,29 @@ export default {
   cursor: pointer;
   margin-left: 0.5rem;
   color: white;
+}
+.brands {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 3rem 2rem;
+  background: #18141d;
+  margin-top: 2rem;
+}
+
+.brands img {
+  height: 40px;
+  margin: 1rem 2rem;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+  filter: grayscale(100%);
+}
+
+.brands img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: grayscale(0%);
 }
 
 /* Added Hero Section Styles */
@@ -385,6 +438,13 @@ export default {
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+}
+.gradient-text {
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 /* Store Header */

@@ -6,22 +6,25 @@
             <img src="/src/assets/images/Screenshot_2025-02-24_105300-removebg-preview.png" alt="TechBolt Logo" style="height: 50px; width: 110px;" />
           </div>
           <nav>
-            <div class="nav-item">
-              <Router-link to="/landing">Home</Router-link>
-            </div>
-            <div class="nav-item">
-              <a href="#">Gaming Gear</a>
-            </div>
-            <div class="nav-item">
-              <a href="#">Laptops</a>
-            </div>
-            <div class="nav-item">
-              <a href="#">Storage</a>
-            </div>
-            <div class="nav-item">
-              <a href="#">Peripherals</a>
-            </div>
-          </nav>
+        <div class="nav-item">
+          <Router-link to="/landing">Home</Router-link>
+        </div>
+        <div class="nav-item">
+          <Router-link to="/gears">Gears</Router-link>
+        </div>
+        <div class="nav-item">
+         <RouterLink to="/laptops">Laptops</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/storage">Storage</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/peripherals">Peripherals</RouterLink>
+        </div>
+        <div class="nav-item">
+          <RouterLink to="/about">About</RouterLink>
+        </div>
+      </nav>
           <div class="icons">
             <div class="search-bar">
               <input type="text" v-model="query" placeholder="Search..." @input="handleSearch" />
@@ -29,14 +32,14 @@
                 <div v-for="result in searchResults" :key="result" @click="navigateTo(result)">{{ result }}</div>
               </div>
               <router-link to="/cart" class="cart-button">🛒</router-link>
-              <button>👤</button>
+              <RouterLink to="/user">👤</RouterLink>
             </div>
           </div>
         </header>
   
         <section class="hero">
           <video width="200px" autoplay loop muted>
-            <source src="\src\assets\video\gearhero.mp4" type="video/mp4" />
+            <source src="\src\assets\video\storage.mp4" type="video/mp4" />
           </video>
           <div class="hero-text">
             <h1 class="gradient-text">Speed Up Your Storage</h1>
@@ -103,7 +106,7 @@
             name: 'Samsung 990 PRO',
             description: 'Ultra-fast PCIe 5.0 NVMe SSD designed for gaming and high-end computing with exceptional speed and reliability.',
             price: '$229.99',
-            image: '/src/assets/images/samsung_990_pro.webp',
+            image: '/src/assets/images/990pro.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '2TB',
@@ -118,7 +121,7 @@
             name: 'WD_BLACK SN850X',
             description: 'High-performance internal SSD optimized for gaming with Game Mode 2.0 and advanced thermal management.',
             price: '$179.99',
-            image: '/src/assets/images/wd_black_sn850x.webp',
+            image: '/src/assets/images/sn850x.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '1TB',
@@ -133,7 +136,7 @@
             name: 'Crucial T700',
             description: 'Cutting-edge PCIe 5.0 NVMe SSD with enthusiast-grade performance for next-gen gaming and content creation.',
             price: '$249.99',
-            image: '/src/assets/images/crucial_t700.webp',
+            image: '/src/assets/images/t700.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '2TB',
@@ -148,7 +151,7 @@
             name: 'Seagate FireCuda Gaming Hub',
             description: 'External HDD with customizable RGB lighting, USB hub functionality, and massive storage for game libraries.',
             price: '$189.99',
-            image: '/src/assets/images/seagate_firecuda_hub.webp',
+            image: '/src/assets/images/ghub1.png',
             badge: 'External',
             specs: {
               'CAPACITY': '8TB',
@@ -163,7 +166,7 @@
             name: 'Kingston FURY Renegade',
             description: 'Extreme-performance PCIe 4.0 SSD with low-profile graphene heatsink for uncompromising gaming performance.',
             price: '$159.99',
-            image: '/src/assets/images/kingston_fury.webp',
+            image: '/src/assets/images/renegade.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '1TB',
@@ -178,7 +181,7 @@
             name: 'Samsung T9 Portable SSD',
             description: 'Rugged external SSD with exceptional speeds and drop resistance for gamers and content creators on the go.',
             price: '$209.99',
-            image: '/src/assets/images/samsung_t9.webp',
+            image: '/src/assets/images/t9.webp',
             badge: 'External',
             specs: {
               'CAPACITY': '2TB',
@@ -193,7 +196,7 @@
             name: 'Seagate FireCuda 530',
             description: 'High-performance internal SSD with heatsink designed specifically for PS5 and PC gaming setups.',
             price: '$199.99',
-            image: '/src/assets/images/firecuda_530.webp',
+            image: '/src/assets/images/fire530.webp',
             badge: 'SSD',
             specs: {
               'CAPACITY': '1TB',
@@ -208,7 +211,7 @@
             name: 'WD_BLACK P40 Game Drive',
             description: 'Portable SSD with customizable RGB lighting, shock-resistant design, and optimized for console and PC gaming.',
             price: '$139.99',
-            image: '/src/assets/images/wd_black_p40.webp',
+            image: '/src/assets/images/p40.webp',
             badge: 'External',
             specs: {
               'CAPACITY': '1TB',
@@ -221,11 +224,11 @@
           }
         ],
         brands: [
-          { name: 'Samsung', image: '/src/assets/images/samsung_logo.webp' },
-          { name: 'WD_BLACK', image: '/src/assets/images/wd_black_logo.webp' },
-          { name: 'Seagate', image: '/src/assets/images/seagate_logo.webp' },
-          { name: 'Crucial', image: '/src/assets/images/crucial_logo.webp' },
-          { name: 'Kingston', image: '/src/assets/images/kingston_logo.webp' },
+          { name: 'Samsung', image: '/src/assets/images/samsung.webp' },
+          { name: 'WD_BLACK', image: '/src/assets/images/wd.webp' },
+          { name: 'Seagate', image: '/src/assets/images/seagate-logo.webp' },
+          { name: 'Crucial', image: '/src/assets/images/crucial.webp' },
+          { name: 'Kingston', image: '/src/assets/images/kingston1.webp' },
           { name: 'Corsair', image: '/src/assets/images/CORSAIRLogo2020_stack_W.webp' }
         ],
         items: {
