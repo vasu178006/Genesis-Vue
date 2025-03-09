@@ -110,7 +110,7 @@ export default {
         {
           name: 'NVIDIA RTX 4090',
           description: 'The most powerful consumer graphics card ever made. Features DLSS 3.0, ray tracing, and unmatched 4K gaming performance.',
-          price: '$1,600.00',
+          price: '₹96,000.00',
           image: '/images/geforce_rtx_4090_graphics_card_available_october_12.webp',
           badge: 'Graphics Card',
           specs: {
@@ -125,7 +125,7 @@ export default {
         {
           name: 'Intel Core i9-13900K',
           description: 'High-performance processor for gaming and content creation with 24 cores and up to 5.8GHz boost clock.',
-          price: '$599.99',
+          price: '₹51,000.00',
           image: '/images/i9 13900k.webp',
           badge: 'Processor',
           specs: {
@@ -140,7 +140,7 @@ export default {
         {
           name: 'ASUS ROG Strix Z790',
           description: 'Premium motherboard for Intel 12th and 13th gen processors with excellent VRM and connectivity options.',
-          price: '$399.99',
+          price: '₹34,000',
           image: '/images/z790e.png',
           badge: 'Motherboard',
           specs: {
@@ -155,7 +155,7 @@ export default {
         {
           name: 'G.Skill Trident Z5 32GB',
           description: 'High-performance DDR5 memory kit with RGB lighting and excellent overclocking potential.',
-          price: '$199.99',
+          price: '₹17000',
           image: '/images/g skill trident z.webp',
           badge: 'Memory',
           specs: {
@@ -170,8 +170,8 @@ export default {
         {
           name: 'NVIDIA RTX 5070',
           description: 'Next-generation mid-range graphics card with exceptional 4K gaming capability. Features enhanced DLSS 4.0, advanced ray tracing, and excellent power efficiency.',
-          price: '$649.99',
-          image: '/src/a/images/rtx5070.webp',
+          price: '₹55,250',
+          image: '/images/rtx5070.webp',
           badge: 'Graphics Card',
           specs: {
           'MEMORY': '16GB GDDR7',
@@ -185,7 +185,7 @@ export default {
         {
           name: 'AMD Ryzen 9 7950X3D',
 description: 'Ultimate gaming and content creation processor with 3D V-Cache technology, offering 16 cores and up to 5.7GHz boost clock.',
-price: '$699.99',
+price: '₹60,000',
 image: '/images/ryzen9.webp',
 badge: 'Processor',
 specs: {
@@ -200,7 +200,7 @@ specs: {
         {
           name: 'GIGABYTE AORUS Z790 Master',
 description: 'High-end motherboard for Intel 12th and 13th gen processors featuring robust power delivery, extensive connectivity, and premium thermal design.',
-price: '$459.99',
+price: '₹39,100',
 image: '/images/gigaz790.webp',
 badge: 'Motherboard',
 specs: {
@@ -215,7 +215,7 @@ specs: {
         {
           name: 'Corsair Vengeance RGB Pro 32GB',
           description: 'Premium DDR5 memory with dynamic multi-zone RGB lighting and reliable performance for gaming and content creation.',
-            price: '$189.99',
+            price: '₹16,150',
             image: '/images/venegance.webp',
             badge: 'Memory',
             specs: {
@@ -257,60 +257,60 @@ specs: {
       this.$router.push('/cart');
     },
     addToCart(product) {
-      try {
-        // Get current cart from localStorage
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        // Find if item already exists
-        const existingItem = cart.find(item => item.name === product.name);
-        
-        if (existingItem) {
-          // If item exists, increase quantity
-          existingItem.quantity += 1;
-        } else {
-          // If item doesn't exist, add new item
-          cart.push({
-            name: product.name,
-            price: parseFloat(product.price.replace('$', '').replace(',', '')),
-            quantity: 1,
-            image: product.image,
-            description: product.description
-          });
-        }
-        
-        // Save updated cart to localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-        
-        // Update local cart state
-        this.cart = cart;
-        
-        // Show success message
-        alert(`${product.name} added to cart!`);
-      } catch (error) {
-        console.error('Error adding to cart:', error);
-        alert('Failed to add item to cart. Please try again.');
-      }
+  try {
+    // Get current cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Find if item already exists
+    const existingItem = cart.find(item => item.name === product.name);
+    
+    if (existingItem) {
+      // If item exists, increase quantity
+      existingItem.quantity += 1;
+    } else {
+      // If item doesn't exist, add new item
+      cart.push({
+        name: product.name,
+        price: parseFloat(product.price.replace('₹', '').replace(',', '')),
+        quantity: 1,
+        image: product.image,
+        description: product.description
+      });
+    }
+    
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Update local cart state
+    this.cart = cart;
+    
+    // Show success message
+    alert(`${product.name} added to cart!`);
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    alert('Failed to add item to cart. Please try again.');
+  }
+},
+loadCart() {
+  try {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    this.cart = storedCart;
+  } catch (error) {
+    console.error('Error loading cart:', error);
+    this.cart = [];
+  }
+},
+mounted() {
+  this.loadCart();
+},
+watch: {
+  cart: {
+    handler(newCart) {
+      localStorage.setItem('cart', JSON.stringify(newCart));
     },
-    loadCart() {
-      try {
-        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-        this.cart = storedCart;
-      } catch (error) {
-        console.error('Error loading cart:', error);
-        this.cart = [];
-      }
-    }
-  },
-  mounted() {
-    this.loadCart();
-  },
-  watch: {
-    cart: {
-      handler(newCart) {
-        localStorage.setItem('cart', JSON.stringify(newCart));
-      },
-      deep: true
-    }
+    deep: true
+  }
+}
   }
 };
 </script>;

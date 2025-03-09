@@ -105,7 +105,7 @@
           {
             name: 'Razer Huntsman V3 Pro',
             description: 'Premium optical mechanical gaming keyboard with customizable actuation points and Gen-3 optical switches for lightning-fast response.',
-            price: '$249.99',
+            price: '₹21,250',
             image: '/images/huntsman.webp',
             badge: 'Keyboard',
             specs: {
@@ -120,7 +120,7 @@
           {
             name: 'Logitech G Pro X Superlight 2',
             description: 'Ultra-lightweight wireless gaming mouse with HERO 2 sensor and zero-compromise performance for professional esports players.',
-            price: '$159.99',
+            price: '₹13,600',
             image: '/images/gpro.png',
             badge: 'Mouse',
             specs: {
@@ -135,7 +135,7 @@
           {
             name: 'SteelSeries Arctis Nova Pro',
             description: 'Premium wireless gaming headset with multi-system connectivity, active noise cancellation, and hot-swappable batteries.',
-            price: '$349.99',
+            price: '₹29,750',
             image: '/images/novapro.webp',
             badge: 'Headset',
             specs: {
@@ -150,7 +150,7 @@
           {
             name: 'ASUS ROG Azoth',
             description: 'Enthusiast-grade wireless gaming keyboard with tri-mode connectivity, OLED display, and hot-swappable mechanical switches.',
-            price: '$249.99',
+            price: '₹21,250',
             image: '/images/azoth.png',
             badge: 'Keyboard',
             specs: {
@@ -165,7 +165,7 @@
           {
             name: 'Razer DeathAdder V3 Pro',
             description: 'Iconic ergonomic gaming mouse with Focus Pro 30K optical sensor and 90-hour battery life in an ultra-lightweight design.',
-            price: '$149.99',
+            price: '₹12,750',
             image: '/images/v3pro.webp',
             badge: 'Mouse',
             specs: {
@@ -180,7 +180,7 @@
           {
             name: 'HyperX Cloud Alpha Wireless',
             description: 'Premium wireless gaming headset with up to 300 hours of battery life and DTS Spatial Audio for immersive gaming experiences.',
-            price: '$199.99',
+            price: '₹17,000',
             image: '/images/cloudalpha.webp',
             badge: 'Headset',
             specs: {
@@ -195,7 +195,7 @@
           {
             name: 'Corsair K70 RGB TKL Champion',
             description: 'Tournament-ready tenkeyless mechanical keyboard with CORSAIR OPX optical-mechanical switches and 8,000Hz polling rate.',
-            price: '$169.99',
+            price: '₹14,450',
             image: '/images/k70.webp',
             badge: 'Keyboard',
             specs: {
@@ -210,7 +210,7 @@
           {
             name: 'Logitech G733 LIGHTSPEED',
             description: 'Colorful wireless gaming headset with suspension headband, customizable RGB lighting, and advanced microphone technology.',
-            price: '$149.99',
+            price: '₹12,750',
             image: '/images/g733.webp',
             badge: 'Headset',
             specs: {
@@ -226,7 +226,7 @@
         brands: [
           { name: 'Logitech', image: '/images/logitech-gaming-2.webp' },
           { name: 'Razer', image: '/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
-          { name: 'ASUS', image: '/images/ASUS logo white.webp' },
+          { name: 'ASUS', image: '/images/asus.webp' },
           { name: 'HyperX', image: '/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
           { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' },
           { name: 'SteelSeries', image: '/images/steelseries.png' }
@@ -250,66 +250,66 @@
         this.$router.push(this.items[item]);
       },
       goToCart() {
-        this.$router.push('/cart');
-      },
-      addToCart(product) {
-        try {
-          // Get current cart from localStorage
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          
-          // Find if item already exists
-          const existingItem = cart.find(item => item.name === product.name);
-          
-          if (existingItem) {
-            // If item exists, increase quantity
-            existingItem.quantity += 1;
-          } else {
-            // If item doesn't exist, add new item
-            cart.push({
-              name: product.name,
-              price: parseFloat(product.price.replace('$', '').replace(',', '')),
-              quantity: 1,
-              image: product.image,
-              description: product.description
-            });
-          }
-          
-          // Save updated cart to localStorage
-          localStorage.setItem('cart', JSON.stringify(cart));
-          
-          // Update local cart state
-          this.cart = cart;
-          
-          // Show success message
-          alert(`${product.name} added to cart!`);
-        } catch (error) {
-          console.error('Error adding to cart:', error);
-          alert('Failed to add item to cart. Please try again.');
-        }
-      },
-      loadCart() {
-        try {
-          const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-          this.cart = storedCart;
-        } catch (error) {
-          console.error('Error loading cart:', error);
-          this.cart = [];
-        }
-      }
+      this.$router.push('/cart');
     },
-    mounted() {
-      this.loadCart();
-    },
-    watch: {
-      cart: {
-        handler(newCart) {
-          localStorage.setItem('cart', JSON.stringify(newCart));
-        },
-        deep: true
-      }
+    addToCart(product) {
+  try {
+    // Get current cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Find if item already exists
+    const existingItem = cart.find(item => item.name === product.name);
+    
+    if (existingItem) {
+      // If item exists, increase quantity
+      existingItem.quantity += 1;
+    } else {
+      // If item doesn't exist, add new item
+      cart.push({
+        name: product.name,
+        price: parseFloat(product.price.replace('₹', '').replace(',', '')),
+        quantity: 1,
+        image: product.image,
+        description: product.description
+      });
     }
-  };
-  </script>
+    
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Update local cart state
+    this.cart = cart;
+    
+    // Show success message
+    alert(`${product.name} added to cart!`);
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    alert('Failed to add item to cart. Please try again.');
+  }
+},
+loadCart() {
+  try {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    this.cart = storedCart;
+  } catch (error) {
+    console.error('Error loading cart:', error);
+    this.cart = [];
+  }
+},
+mounted() {
+  this.loadCart();
+},
+watch: {
+  cart: {
+    handler(newCart) {
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    },
+    deep: true
+  }
+}
+  }
+};
+</script>;
   
   <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap');

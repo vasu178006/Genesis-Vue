@@ -23,14 +23,14 @@
           </div>
           <div class="item-info">
             <div class="item-name">{{ item.name }}</div>
-            <div class="item-price">${{ (item.price || 0).toFixed(2) }}</div>
+            <div class="item-price">₹{{ (item.price || 0).toFixed(2) }}</div>
             <div class="quantity-controls">
               <button @click="updateQuantity(index, -1)" class="quantity-btn">-</button>
               <span class="quantity">{{ item.quantity || 1 }}</span>
               <button @click="updateQuantity(index, 1)" class="quantity-btn">+</button>
             </div>
           </div>
-          <div class="item-total">${{ ((item.price || 0) * (item.quantity || 1)).toFixed(2) }}</div>
+          <div class="item-total">₹{{ ((item.price || 0) * (item.quantity || 1)).toFixed(2) }}</div>
           <button @click="removeFromCart(index)" class="remove-btn">Remove</button>
         </div>
       </div>
@@ -38,7 +38,7 @@
       <div class="cart-summary">
         <div class="total-row">
           <span class="total-label">Total:</span>
-          <span class="total-amount">${{ cartTotal.toFixed(2) }}</span>
+          <span class="total-amount">₹{{ cartTotal.toFixed(2) }}</span>
         </div>
         <div class="cart-buttons">
           <button @click="clearCart" class="clear-cart-btn">Clear Cart</button>
@@ -95,7 +95,7 @@ export default {
         } else {
           const newItem = {
             name: item.name,
-            price: parseFloat(item.price) || 0,
+            price: parseFloat(item.price.replace('₹', '').replace(',', '')) || 0,
             quantity: 1,
             image: item.image || null
           };

@@ -105,7 +105,7 @@
           {
             name: 'Samsung 990 PRO',
             description: 'Ultra-fast PCIe 5.0 NVMe SSD designed for gaming and high-end computing with exceptional speed and reliability.',
-            price: '$229.99',
+            price: '₹19,950',
             image: '/images/990pro.webp',
             badge: 'SSD',
             specs: {
@@ -120,7 +120,7 @@
           {
             name: 'WD_BLACK SN850X',
             description: 'High-performance internal SSD optimized for gaming with Game Mode 2.0 and advanced thermal management.',
-            price: '$179.99',
+            price: '₹15,300',
             image: '/images/sn850x.webp',
             badge: 'SSD',
             specs: {
@@ -135,7 +135,7 @@
           {
             name: 'Crucial T700',
             description: 'Cutting-edge PCIe 5.0 NVMe SSD with enthusiast-grade performance for next-gen gaming and content creation.',
-            price: '$249.99',
+            price: '₹21,250',
             image: '/images/t700.webp',
             badge: 'SSD',
             specs: {
@@ -150,7 +150,7 @@
           {
             name: 'Seagate FireCuda Gaming Hub',
             description: 'External HDD with customizable RGB lighting, USB hub functionality, and massive storage for game libraries.',
-            price: '$189.99',
+            price: '₹16,150',
             image: '/images/ghub1.png',
             badge: 'External',
             specs: {
@@ -165,7 +165,7 @@
           {
             name: 'Kingston FURY Renegade',
             description: 'Extreme-performance PCIe 4.0 SSD with low-profile graphene heatsink for uncompromising gaming performance.',
-            price: '$159.99',
+            price: '₹13,600',
             image: '/images/renegade.webp',
             badge: 'SSD',
             specs: {
@@ -180,7 +180,7 @@
           {
             name: 'Samsung T9 Portable SSD',
             description: 'Rugged external SSD with exceptional speeds and drop resistance for gamers and content creators on the go.',
-            price: '$209.99',
+            price: '₹17,850',
             image: '/images/t9.webp',
             badge: 'External',
             specs: {
@@ -195,7 +195,7 @@
           {
             name: 'Seagate FireCuda 530',
             description: 'High-performance internal SSD with heatsink designed specifically for PS5 and PC gaming setups.',
-            price: '$199.99',
+            price: '₹17,000',
             image: '/images/fire530.webp',
             badge: 'SSD',
             specs: {
@@ -210,7 +210,7 @@
           {
             name: 'WD_BLACK P40 Game Drive',
             description: 'Portable SSD with customizable RGB lighting, shock-resistant design, and optimized for console and PC gaming.',
-            price: '$139.99',
+            price: '₹11,900',
             image: '/images/p40.webp',
             badge: 'External',
             specs: {
@@ -228,7 +228,7 @@
           { name: 'WD_BLACK', image: '/images/wd.webp' },
           { name: 'Seagate', image: '/images/seagate-logo.webp' },
           { name: 'Crucial', image: '/images/crucial.webp' },
-          { name: 'Kingston', image: '/images/kingston1.webp' },
+          { name: 'Kingston', image: '/images/kingston.webp' },
           { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' }
         ],
         items: {
@@ -250,66 +250,66 @@
         this.$router.push(this.items[item]);
       },
       goToCart() {
-        this.$router.push('/cart');
-      },
-      addToCart(product) {
-        try {
-          // Get current cart from localStorage
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          
-          // Find if item already exists
-          const existingItem = cart.find(item => item.name === product.name);
-          
-          if (existingItem) {
-            // If item exists, increase quantity
-            existingItem.quantity += 1;
-          } else {
-            // If item doesn't exist, add new item
-            cart.push({
-              name: product.name,
-              price: parseFloat(product.price.replace('$', '').replace(',', '')),
-              quantity: 1,
-              image: product.image,
-              description: product.description
-            });
-          }
-          
-          // Save updated cart to localStorage
-          localStorage.setItem('cart', JSON.stringify(cart));
-          
-          // Update local cart state
-          this.cart = cart;
-          
-          // Show success message
-          alert(`${product.name} added to cart!`);
-        } catch (error) {
-          console.error('Error adding to cart:', error);
-          alert('Failed to add item to cart. Please try again.');
-        }
-      },
-      loadCart() {
-        try {
-          const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-          this.cart = storedCart;
-        } catch (error) {
-          console.error('Error loading cart:', error);
-          this.cart = [];
-        }
-      }
+      this.$router.push('/cart');
     },
-    mounted() {
-      this.loadCart();
-    },
-    watch: {
-      cart: {
-        handler(newCart) {
-          localStorage.setItem('cart', JSON.stringify(newCart));
-        },
-        deep: true
-      }
+    addToCart(product) {
+  try {
+    // Get current cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Find if item already exists
+    const existingItem = cart.find(item => item.name === product.name);
+    
+    if (existingItem) {
+      // If item exists, increase quantity
+      existingItem.quantity += 1;
+    } else {
+      // If item doesn't exist, add new item
+      cart.push({
+        name: product.name,
+        price: parseFloat(product.price.replace('₹', '').replace(',', '')),
+        quantity: 1,
+        image: product.image,
+        description: product.description
+      });
     }
-  };
-  </script>
+    
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Update local cart state
+    this.cart = cart;
+    
+    // Show success message
+    alert(`${product.name} added to cart!`);
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    alert('Failed to add item to cart. Please try again.');
+  }
+},
+loadCart() {
+  try {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    this.cart = storedCart;
+  } catch (error) {
+    console.error('Error loading cart:', error);
+    this.cart = [];
+  }
+},
+mounted() {
+  this.loadCart();
+},
+watch: {
+  cart: {
+    handler(newCart) {
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    },
+    deep: true
+  }
+}
+  }
+};
+</script>;
   
   <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap');

@@ -8,10 +8,10 @@
       </div>
       <nav>
         <div class="nav-item">
-          <Router-link to="/landing">Home</Router-link>
+          <RouterLink to="/landing">Home</RouterLink>
         </div>
         <div class="nav-item">
-          <Router-link to="/gears">Gears</Router-link>
+          <RouterLink to="/gears">Gears</RouterLink>
         </div>
         <div class="nav-item">
          <RouterLink to="/laptops">Laptops</RouterLink>
@@ -85,7 +85,7 @@
           </div>
           
           <div class="product-price">{{ product.price }}</div>
-          <button class="add-to-cart" @click="addToCart(product.name)">Add to Cart</button>
+          <button class="add-to-cart" @click="addToCart(product)">Add to Cart</button>
         </div>
       </div>
     </section>
@@ -105,6 +105,7 @@
 export default {
   data() {
     return {
+      cart: [],
       hoveredProduct: null,
       searchQuery: '',
       showResults: false,
@@ -114,7 +115,7 @@ export default {
           description: 'Experience gaming perfection with our flagship build featuring the latest RTX 4090 and Intel Core i9-13900K. Perfect for 4K gaming and content creation.',
           image: '/images/beast.webp',
           badge: 'Gaming PC',
-          price: '$2999.99',
+          price: '₹95,000',
           specs: {
             'CPU': 'Intel Core i9-13900K (24 cores, up to 5.80GHz)',
             'GPU': 'NVIDIA RTX 4090 24GB GDDR6X',
@@ -130,7 +131,7 @@ export default {
           description: 'The most powerful consumer graphics card ever made. Features DLSS 3.0, ray tracing, and unmatched 4K gaming performance.',
           image: '/images/4090.png',
           badge: 'Component',
-          price: '$1599.99',
+          price: '₹80,000',
           specs: {
             'MEMORY': '24GB GDDR6X',
             'BOOST CLOCK': '2.52 GHz',
@@ -145,7 +146,7 @@ export default {
           description: 'Perfect balance of performance and value. Great for 1440p gaming and streaming.',
           image: '/images/mid.png',
           badge: 'Gaming PC',
-          price: '$1499.99',
+          price: '₹70,000',
           specs: {
             'CPU': 'AMD Ryzen 7 7800X3D',
             'GPU': 'NVIDIA RTX 4070 12GB',
@@ -161,7 +162,7 @@ export default {
           description: 'High-performance multi-core processor for gaming and productivity.',
           image: '/images/vivobook.png',
           badge: 'Component',
-          price: '$349.99',
+          price: '₹50,000',
           specs: {
             'CORES/THREADS': '8 Cores / 16 Threads',
             'BASE CLOCK': '3.8 GHz',
@@ -175,7 +176,7 @@ export default {
       brands: [
         { name: 'Logitech', image: '/images/logitech-gaming-2.webp' },
         { name: 'Razer', image: '/images/razer-logo-83F59A22CB-seeklogo.com.webp' },
-        { name: 'ASUS', image: '/images/ASUS logo white.webp' },
+        { name: 'ASUS', image: '/images/asus.webp' },
         { name: 'HyperX', image: '/images/hyperx-logo_brandlogos.net_w6acg-512x512.webp' },
         { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' }
       ],
@@ -199,7 +200,7 @@ export default {
         'Mice': 'mice.html',
         'Headsets': 'headsets.html'
       }
-    }
+    };
   },
   computed: {
     filteredItems() {
@@ -221,17 +222,69 @@ export default {
     handleSearch() {
       this.showResults = !!this.searchQuery;
     },
-    navigateTo(url) {
-      window.location.href = url;
+    navigateTo(link) {
+      this.$router.push(link);
     },
-    addToCart(item) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push(item);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${item} added to cart!`);
+    goToCart() {
+      this.$router.push('/cart');
+    },
+    addToCart(product) {
+      try {
+        // Get current cart from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Find if item already exists
+        const existingItem = cart.find(item => item.name === product.name);
+        
+        if (existingItem) {
+          // If item exists, increase quantity
+          existingItem.quantity += 1;
+        } else {
+          // If item doesn't exist, add new item
+          cart.push({
+            name: product.name,
+            price: parseFloat(product.price.replace('₹', '').replace(',', '')),
+            quantity: 1,
+            image: product.image,
+            description: product.description
+          });
+        }
+        
+        // Save updated cart to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Update local cart state
+        this.cart = cart;
+        
+        // Show success message
+        alert(`${product.name} added to cart!`);
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+        alert('Failed to add item to cart. Please try again.');
+      }
+    },
+    loadCart() {
+      try {
+        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        this.cart = storedCart;
+      } catch (error) {
+        console.error('Error loading cart:', error);
+        this.cart = [];
+      }
+    }
+  },
+  mounted() {
+    this.loadCart();
+  },
+  watch: {
+    cart: {
+      handler(newCart) {
+        localStorage.setItem('cart', JSON.stringify(newCart));
+      },
+      deep: true
     }
   }
-}
+};
 </script>
 
 <style scoped>

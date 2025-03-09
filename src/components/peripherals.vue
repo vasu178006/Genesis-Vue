@@ -105,7 +105,7 @@
           {
             name: 'ASUS ROG Swift OLED PG27AQDM',
             description: 'Premium 27-inch OLED gaming monitor with lightning-fast response time and vibrant colors for immersive gaming.',
-            price: '$899.99',
+            price: '₹76,500',
             image: '/images/rogswift.webp',
             badge: 'Monitor',
             specs: {
@@ -120,7 +120,7 @@
           {
             name: 'Samsung Odyssey G9 G95NC',
             description: 'Ultra-wide 49-inch curved OLED gaming monitor with Dual QHD resolution for panoramic immersion.',
-            price: '$1,799.99',
+            price: '1,53,000',
             image: '/images/odyssey.webp',
             badge: 'Monitor',
             specs: {
@@ -135,8 +135,8 @@
           {
             name: 'Shure SM7B',
             description: 'Professional dynamic microphone with smooth, flat frequency response for broadcasting, podcasting, and studio recording.',
-            price: '$399.99',
-            image: '/images/shure.webp',
+            price: '₹34,000',
+            image: '/images/shuremic.webp',
             badge: 'Microphone',
             specs: {
               'TYPE': 'Dynamic',
@@ -150,7 +150,7 @@
           {
             name: 'HyperX QuadCast S',
             description: 'USB condenser gaming microphone with customizable RGB lighting and built-in anti-vibration shock mount.',
-            price: '$159.99',
+            price: '₹13,600',
             image: '/images/quadcast.webp',
             badge: 'Microphone',
             specs: {
@@ -165,7 +165,7 @@
           {
             name: 'LG UltraGear 27GR95QE',
             description: 'Fast 27-inch OLED gaming monitor with 240Hz refresh rate and ultra-low response time for competitive gaming.',
-            price: '$799.99',
+            price: '₹68,000',
             image: '/images/ug.webp',
             badge: 'Monitor',
             specs: {
@@ -180,7 +180,7 @@
           {
             name: 'Logitech Brio 4K Pro',
             description: 'Ultra HD webcam with 4K resolution, HDR, and advanced auto-focus for crystal-clear video streaming and conferencing.',
-            price: '$199.99',
+            price: '₹17,000',
             image: '/images/brio.webp',
             badge: 'Webcam',
             specs: {
@@ -195,7 +195,7 @@
           {
             name: 'Elgato Wave:3',
             description: 'Premium USB condenser microphone with digital mixer and proprietary anti-distortion technology for content creators.',
-            price: '$149.99',
+            price: '₹12,750',
             image: '/images/elgato.webp',
             badge: 'Microphone',
             specs: {
@@ -210,7 +210,7 @@
           {
             name: 'Razer Kiyo Pro',
             description: 'High-performance webcam with adaptive light sensor and uncompressed 1080p 60FPS video for professional streaming.',
-            price: '$179.99',
+            price: '₹15,300',
             image: '/images/kiyo.webp',
             badge: 'Webcam',
             specs: {
