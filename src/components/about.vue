@@ -119,10 +119,10 @@ export default {
       defaultProfilePic: 'https://via.placeholder.com/300',
       developer: {
         name: 'Vasu Sharma',
-        role: 'Full Stack Developer',
+        role: 'Developer',
         contributions: 'Designed and implemented the entire application architecture, created responsive UI components, optimized performance, and deployed the application to production.',
         skills: ['Vue.js', 'JavaScript', 'CSS3', 'Node.js', 'Firebase', ],
-        profilePic: '/images/devicon.webp',
+        profilePic: '/images/jin.webp',
       }
     };
   },

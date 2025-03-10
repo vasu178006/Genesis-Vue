@@ -120,7 +120,7 @@
           {
             name: 'Samsung Odyssey G9 G95NC',
             description: 'Ultra-wide 49-inch curved OLED gaming monitor with Dual QHD resolution for panoramic immersion.',
-            price: '1,53,000',
+            price: '83,000',
             image: '/images/odyssey.webp',
             badge: 'Monitor',
             specs: {
@@ -242,74 +242,74 @@
     },
     methods: {
       handleSearch() {
-        this.searchResults = Object.keys(this.items).filter(item =>
-          item.toLowerCase().includes(this.query.toLowerCase())
-        );
-      },
-      navigateTo(item) {
-        this.$router.push(this.items[item]);
-      },
-      goToCart() {
-        this.$router.push('/cart');
-      },
-      addToCart(product) {
-        try {
-          // Get current cart from localStorage
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          
-          // Find if item already exists
-          const existingItem = cart.find(item => item.name === product.name);
-          
-          if (existingItem) {
-            // If item exists, increase quantity
-            existingItem.quantity += 1;
-          } else {
-            // If item doesn't exist, add new item
-            cart.push({
-              name: product.name,
-              price: parseFloat(product.price.replace('$', '').replace(',', '')),
-              quantity: 1,
-              image: product.image,
-              description: product.description
-            });
-          }
-          
-          // Save updated cart to localStorage
-          localStorage.setItem('cart', JSON.stringify(cart));
-          
-          // Update local cart state
-          this.cart = cart;
-          
-          // Show success message
-          alert(`${product.name} added to cart!`);
-        } catch (error) {
-          console.error('Error adding to cart:', error);
-          alert('Failed to add item to cart. Please try again.');
-        }
-      },
-      loadCart() {
-        try {
-          const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-          this.cart = storedCart;
-        } catch (error) {
-          console.error('Error loading cart:', error);
-          this.cart = [];
-        }
-      }
+      this.searchResults = Object.keys(this.items).filter(item =>
+        item.toLowerCase().includes(this.query.toLowerCase())
+      );
     },
-    mounted() {
-      this.loadCart();
+    navigateTo(item) {
+      this.$router.push(this.items[item]);
     },
-    watch: {
-      cart: {
-        handler(newCart) {
-          localStorage.setItem('cart', JSON.stringify(newCart));
-        },
-        deep: true
-      }
+    goToCart() {
+      this.$router.push('/cart');
+    },
+    addToCart(product) {
+  try {
+    // Get current cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Find if item already exists
+    const existingItem = cart.find(item => item.name === product.name);
+    
+    if (existingItem) {
+      // If item exists, increase quantity
+      existingItem.quantity += 1;
+    } else {
+      // If item doesn't exist, add new item
+      cart.push({
+        name: product.name,
+        price: parseFloat(product.price.replace('₹', '').replace(',', '')),
+        quantity: 1,
+        image: product.image,
+        description: product.description
+      });
     }
-  };
-  </script>
+    
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Update local cart state
+    this.cart = cart;
+    
+    // Show success message
+    alert(`${product.name} added to cart!`);
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    alert('Failed to add item to cart. Please try again.');
+  }
+},
+loadCart() {
+  try {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    this.cart = storedCart;
+  } catch (error) {
+    console.error('Error loading cart:', error);
+    this.cart = [];
+  }
+},
+mounted() {
+  this.loadCart();
+},
+watch: {
+  cart: {
+    handler(newCart) {
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    },
+    deep: true
+  }
+}
+  }
+};
+</script>;
   
   <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap');
