@@ -1,4 +1,5 @@
 <template>
+  <title>Genesis</title>
   <div class="auth-container">
     <h2 class="fade-in">Sign in with Google</h2>
 

@@ -122,7 +122,7 @@ export default {
         role: 'Developer',
         contributions: 'Designed and implemented the entire application architecture, created responsive UI components, optimized performance, and deployed the application to production.',
         skills: ['Vue.js', 'JavaScript', 'CSS3', 'Node.js', 'Firebase', ],
-        profilePic: '/images/jin.webp',
+        profilePic: '/images/heisen.jpg',
       }
     };
   },

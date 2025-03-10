@@ -19,7 +19,7 @@
           <RouterLink to="/storage">Storage</RouterLink>
         </div>
         <div class="nav-item">
-          <RouterLink to="/peripherals">Peripherals</RouterLink>
+          <RouterLink to="/Components">Component</RouterLink>
         </div>
         <div class="nav-item">
           <RouterLink to="/about">About</RouterLink>

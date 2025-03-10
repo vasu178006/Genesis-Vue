@@ -10,7 +10,7 @@
           <Router-link to="/landing">Home</Router-link>
         </div>
         <div class="nav-item">
-          <Router-link to="/gears">Gears</Router-link>
+          <Router-link to="/Components">Components</Router-link>
         </div>
         <div class="nav-item">
          <RouterLink to="/laptops">Laptops</RouterLink>

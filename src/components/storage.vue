@@ -16,7 +16,7 @@
          <RouterLink to="/laptops">Laptops</RouterLink>
         </div>
         <div class="nav-item">
-          <RouterLink to="/storage">Storage</RouterLink>
+          <RouterLink to="/Components">Components</RouterLink>
         </div>
         <div class="nav-item">
           <RouterLink to="/peripherals">Peripherals</RouterLink>

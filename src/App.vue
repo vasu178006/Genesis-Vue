@@ -1,9 +1,7 @@
 <template>
   <header>
+    <title>Genesis</title>
     <div class="wrapper">
-      <nav>
-        <RouterLink v-if="!isAuthenticated" to="/login">Login</RouterLink>
-      </nav>
     </div>
   </header>
 
