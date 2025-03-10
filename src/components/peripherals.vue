@@ -232,16 +232,21 @@
           { name: 'Razer', image: '/images/razer-logo-83F59A22CB-seeklogo.com.webp' }
         ],
         items: {
-          'Monitors': 'monitors.html',
-          'Microphones': 'microphones.html',
-          'Webcams': 'webcams.html',
-          'Headsets': 'headsets.html',
-          'Keyboards': 'keyboards.html'
-        }
-      };
-    },
-    methods: {
-      handleSearch() {
+        'Graphics Cards': '/Components',
+        'Processors': '/Components',
+        'Motherboards': '/Components',
+        'Power Supplies': '/Components',
+        'Gaming Mice': '/gears',
+        'Keyboards': '/gears',
+        'Monitors': '/gears',
+        'Headsets': '/gears',
+        'Laptops': '/laptops',
+        'Storage': '/storage',
+      }
+    };
+  },
+  methods: {
+    handleSearch() {
       this.searchResults = Object.keys(this.items).filter(item =>
         item.toLowerCase().includes(this.query.toLowerCase())
       );

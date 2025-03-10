@@ -232,23 +232,28 @@
           { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' }
         ],
         items: {
-          'SSDs': 'ssds.html',
-          'External Drives': 'external-drives.html',
-          'HDDs': 'hdds.html',
-          'Memory Cards': 'memory-cards.html',
-          'NAS Storage': 'nas.html'
-        }
-      };
+        'Graphics Cards': '/Components',
+        'Processors': '/Components',
+        'Motherboards': '/Components',
+        'Power Supplies': '/Components',
+        'Gaming Mice': '/gears',
+        'Keyboards': '/gears',
+        'Monitors': '/gears',
+        'Headsets': '/gears',
+        'Laptops': '/laptops',
+        'Storage': '/storage',
+      }
+    };
+  },
+  methods: {
+    handleSearch() {
+      this.searchResults = Object.keys(this.items).filter(item =>
+        item.toLowerCase().includes(this.query.toLowerCase())
+      );
     },
-    methods: {
-      handleSearch() {
-        this.searchResults = Object.keys(this.items).filter(item =>
-          item.toLowerCase().includes(this.query.toLowerCase())
-        );
-      },
-      navigateTo(item) {
-        this.$router.push(this.items[item]);
-      },
+    navigateTo(item) {
+      this.$router.push(this.items[item]);
+    },
       goToCart() {
       this.$router.push('/cart');
     },

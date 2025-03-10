@@ -27,10 +27,23 @@
       </nav>
       <div class="icons">
         <div class="search-bar">
-          <input type="text" id="search" placeholder="Search..." v-model="searchQuery" @input="handleSearch">
-          <div class="search-results" id="searchResults" v-show="showResults">
-            <div v-for="(url, item) in filteredItems" :key="item" @click="navigateTo(url)">
-              {{ item }}
+          <input 
+            type="text" 
+            id="search" 
+            placeholder="Search..." 
+            v-model="searchQuery" 
+            @input="handleSearch"
+            @focus="showResults = true"
+            @blur="hideResultsWithDelay"
+          >
+          <div class="search-results" v-show="showResults && filteredItems.length">
+            <div 
+              v-for="(item, index) in filteredItems" 
+              :key="index" 
+              @click="navigateTo(item.url)"
+              class="search-result-item"
+            >
+              {{ item.name }}
             </div>
           </div>
           <router-link to="/cart" class="cart-button">🛒</router-link>
@@ -75,7 +88,7 @@
     </section>
 
     <footer>
-      <p>&copy; 2025 Genesis. All rights reserved.</p>
+      <p>© 2025 Genesis. All rights reserved.</p>
     </footer>
   </div>
   </div>
@@ -91,25 +104,16 @@ export default {
       searchQuery: '',
       showResults: false,
       items: {
-        'Graphics Cards': '/components',
+        'Graphics Cards': '/Components',
         'Processors': '/Components',
         'Motherboards': '/Components',
-        'Ram':'/Components',
+        'Power Supplies': '/Components',
         'Gaming Mice': '/gears',
-        'Gaming Keyboards': '/gears',
-        'Gaming Headsets': '/gears',
-        'Gaming Laptops': '/laptops',
-        'Ultrabooks': '/laptops',
-        'Workstation Laptops': '/laptops',
-        'SSD': '/storage',
-        'HDD': '/storage',
-        'External Drives': '/storage',
-        'Monitors': '/peripherals',
         'Keyboards': '/gears',
-        'Mice': '/gears',
+        'Monitors': '/gears',
         'Headsets': '/gears',
-        'Webcam':'/peripherals',
-        'Microphone':'/peripherals',
+        'Laptops': '/laptops',
+        'Storage': '/storage',
       },
       categories: [
         {
@@ -143,73 +147,76 @@ export default {
     };
   },
   computed: {
-  filteredItems() {
-    const query = this.searchQuery.toLowerCase();
-    if (!query) return this.items; // Return all items if query is empty
-
-    return Object.keys(this.items)
-      .filter(item => item.toLowerCase().includes(query))
-      .reduce((obj, key) => {
-        obj[key] = this.items[key];
-        return obj;
-      }, {});
-  }
-},
-methods: {
-  handleSearch() {
-      this.showResults = this.searchQuery.length > 0;
-    },
-    navigateTo(url) {
-      window.location.href = url;
-    },
-    
-  addToCart(item) {
-    try {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push(item);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${item.name} added to cart!`);
-    } catch (error) {
-      console.error('Error adding to cart:', error);
+    filteredItems() {
+      if (!this.searchQuery.trim()) return [];
+      
+      const query = this.searchQuery.toLowerCase().trim();
+      return Object.entries(this.items)
+        .filter(([item]) => item.toLowerCase().includes(query))
+        .map(([name, url]) => ({ name, url }));
     }
   },
-  handleAddToCart(productItem) {
-    const productName = productItem.querySelector('h3').textContent;
-    const productDescription = productItem.querySelector('p')?.textContent || '';
-    const productPrice = parseFloat(productItem.querySelector('.price')?.textContent.replace('$', '') || '0');
+  methods: {
+    handleSearch() {
+      this.showResults = !!this.searchQuery.trim();
+    },
+    navigateTo(url) {
+      this.$router.push(url);
+      this.showResults = false;
+      this.searchQuery = '';
+    },
+    hideResultsWithDelay() {
+      setTimeout(() => {
+        this.showResults = false;
+      }, 200);
+    },
+    addToCart(item) {
+      try {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(item);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${item.name} added to cart!`);
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+      }
+    },
+    handleAddToCart(productItem) {
+      const productName = productItem.querySelector('h3').textContent;
+      const productDescription = productItem.querySelector('p')?.textContent || '';
+      const productPrice = parseFloat(productItem.querySelector('.price')?.textContent.replace('$', '') || '0');
 
-    this.addToCart({
-      name: productName,
-      description: productDescription,
-      price: productPrice
+      this.addToCart({
+        name: productName,
+        description: productDescription,
+        price: productPrice
+      });
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const addToCartButtons = document.querySelectorAll('.add-to-cart');
+      if (addToCartButtons) {
+        addToCartButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const productItem = button.closest('.product-item');
+            if (productItem) {
+              this.handleAddToCart(productItem);
+            }
+          });
+        });
+      } else {
+        console.warn('No .add-to-cart buttons found.');
+      }
     });
   }
-},
-mounted() {
-  this.$nextTick(() => {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    if (addToCartButtons) {
-      addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const productItem = button.closest('.product-item');
-          if (productItem) {
-            this.handleAddToCart(productItem);
-          }
-        });
-      });
-    } else {
-      console.warn('No .add-to-cart buttons found.');
-    }
-  });
-  }
-}
-</script>;
+};
+</script>
 
 <style scoped>
 /* Global and Reset Styles */
 @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&display=swap');
-.bodyfont{
-  font-family:'Aldrich',sans-serif;
+.bodyfont {
+  font-family: 'Aldrich', sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -217,13 +224,12 @@ mounted() {
   padding: 0;
 }
 
-
 /* Navbar Layout - Fixed */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem; /* Increased padding for better visibility */
+  padding: 1rem 2rem;
   background: #18141d;
   position: sticky;
   top: 0;
@@ -252,15 +258,15 @@ mounted() {
 .nav-item > a {
   color: white;
   text-decoration: none;
-  font-weight: 600; /* Increased font weight for better visibility */
-  padding: 0.5rem 1rem; /* Increased padding for better click area */
+  font-weight: 600;
+  padding: 0.5rem 1rem;
   display: inline-block;
-  font-size: 16px; /* Increased font size */
+  font-size: 16px;
 }
 .nav-item > a:hover {
-  background-color: #9c74c21a; /* Light purple color */
-  border-radius: 8px; /* Adding border radius */
-  transition: background-color 0.3s ease; /* Smooth transition effect */
+  background-color: #9c74c21a;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 .dropdown {
   display: none;
@@ -319,21 +325,11 @@ mounted() {
 }
 
 @keyframes rotateShadow {
-  0% {
-    box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
-  }
-  25% {
-    box-shadow: -2px 2px 8px 1px #aa00ff, 2px -2px 8px 1px #3700ff;
-  }
-  50% {
-    box-shadow: 2px 2px 8px 1px #aa00ff, -2px -2px 8px 1px #3700ff;
-  }
-  75% {
-    box-shadow: 2px -2px 8px 1px #aa00ff, -2px 2px 8px 1px #3700ff;
-  }
-  100% {
-    box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
-  }
+  0% { box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff; }
+  25% { box-shadow: -2px 2px 8px 1px #aa00ff, 2px -2px 8px 1px #3700ff; }
+  50% { box-shadow: 2px 2px 8px 1px #aa00ff, -2px -2px 8px 1px #3700ff; }
+  75% { box-shadow: 2px -2px 8px 1px #aa00ff, -2px 2px 8px 1px #3700ff; }
+  100% { box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff; }
 }
 
 .search-results {
@@ -345,16 +341,18 @@ mounted() {
   z-index: 200;
   width: 180px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  max-height: 200px;
+  overflow-y: auto;
 }
 
-.search-results div {
+.search-result-item {
   padding: 0.5rem 1rem;
   cursor: pointer;
   color: white;
   transition: background 0.2s;
 }
 
-.search-results div:hover {
+.search-result-item:hover {
   background: #a855f7;
 }
 
@@ -378,44 +376,44 @@ mounted() {
   overflow: hidden;
   position: relative;
   display: flex;
-  align-items: center; /* Vertically center the content */
-  justify-content: center; /* Horizontally center the content */
+  align-items: center;
+  justify-content: center;
   background: transparent;
 }
 
 .hero-content {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center items horizontally */
+  justify-content: center;
   width: 100%;
-  max-width: 1200px; /* Added max-width for better responsiveness */
-  gap: 2rem; /* Added gap between video and text */
-  padding: 2rem; /* Added padding for better spacing */
+  max-width: 1200px;
+  gap: 2rem;
+  padding: 2rem;
 }
 
 .video-container {
-  width: 50%; /* Existing width */
-  height: 350px; /* Existing height */
+  width: 50%;
+  height: 350px;
   overflow: hidden;
   position: relative;
-  border-radius: 15px; /* Added border radius */
+  border-radius: 15px;
 }
 .video-container video {
   width: 100%;
   height: 350px;
-  object-fit: cover; /* Ensures video covers the entire container */
-  border-radius: 15px; /* Ensures video itself has rounded corners */
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .hero-text {
-  width: 45%; /* Set width to 45% for text */
-  padding: 20px; /* Added padding for better spacing */
-  text-align: left; /* Align text to the left */
+  width: 45%;
+  padding: 20px;
+  text-align: left;
   z-index: 10;
 }
 
 .hero-text h1 {
-  font-size: 2.5rem; /* Adjusted font size */
+  font-size: 2.5rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
@@ -429,7 +427,7 @@ mounted() {
 }
 
 .hero-text p {
-  font-size: 1rem; /* Adjusted font size */
+  font-size: 1rem;
   margin-bottom: 2rem;
   max-width: 600px;
   color: white;
@@ -544,8 +542,8 @@ mounted() {
 button.container {
   position: relative;
   padding: 0.8em 1.6em;
-  background: transparent; /* Removed blue background */
-  border: 2px solid linear-gradient(90deg, #03a9f4, #f441a5); /* Optional: Add border if needed */
+  background: transparent;
+  border: 2px solid linear-gradient(90deg, #03a9f4, #f441a5);
   border-radius: 0.9em;
   color: white;
   font-weight: bold;
@@ -554,7 +552,7 @@ button.container {
 }
 
 button.container:hover {
-  background: linear-gradient(90deg, #03a9f4, #f441a5); /* Optional: Add hover effect */
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
 }
 
 button.container:active {
@@ -618,7 +616,7 @@ footer {
   }
   
   .video-container {
-    height: 350px; /* Adjusted height */
+    height: 350px;
   }
   
   .categories-header {
@@ -642,7 +640,7 @@ footer {
   }
   
   .video-container {
-    height: 200px; /* Adjusted height */
+    height: 200px;
   }
   
   .hero-text h1 {

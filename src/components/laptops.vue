@@ -181,24 +181,16 @@ export default {
         { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' }
       ],
       items: {
-        'Graphics Cards': 'graphics-cards.html',
-        'Processors': 'processor.html',
-        'Motherboards': 'motherboards.html',
-        'Power Supplies': 'power-supplies.html',
-        'Gaming Mice': 'gaming-mice.html',
-        'Gaming Keyboards': 'gaming-keyboards.html',
-        'Gaming Headsets': 'gaming-headsets.html',
-        'Controllers': 'controllers.html',
-        'Gaming Laptops': 'laptops.html',
-        'Ultrabooks': 'ultrabooks.html',
-        'Workstation Laptops': 'workstation-laptops.html',
-        'SSD': 'ssd.html',
-        'HDD': 'hdd.html',
-        'External Drives': 'external-drives.html',
-        'Monitors': 'monitors.html',
-        'Keyboards': 'keyboards.html',
-        'Mice': 'mice.html',
-        'Headsets': 'headsets.html'
+        'Graphics Cards': '/Components',
+        'Processors': '/Components',
+        'Motherboards': '/Components',
+        'Power Supplies': '/Components',
+        'Gaming Mice': '/gears',
+        'Keyboards': '/gears',
+        'Monitors': '/gears',
+        'Headsets': '/gears',
+        'Laptops': '/laptops',
+        'Storage': '/storage',
       }
     };
   },
@@ -220,10 +212,12 @@ export default {
   },
   methods: {
     handleSearch() {
-      this.showResults = !!this.searchQuery;
+      this.searchResults = Object.keys(this.items).filter(item =>
+        item.toLowerCase().includes(this.query.toLowerCase())
+      );
     },
-    navigateTo(link) {
-      this.$router.push(link);
+    navigateTo(item) {
+      this.$router.push(this.items[item]);
     },
     goToCart() {
       this.$router.push('/cart');

@@ -236,11 +236,16 @@ specs: {
         { name: 'Corsair', image: '/images/CORSAIRLogo2020_stack_W.webp' }
       ],
       items: {
-        'Graphics Cards': 'graphics-cards.html',
-        'Processors': 'processor.html',
-        'Motherboards': 'motherboards.html',
-        'Power Supplies': 'power-supplies.html',
-        'Gaming Mice': 'gaming-mice.html'
+        'Graphics Cards': '/Components',
+        'Processors': '/Components',
+        'Motherboards': '/Components',
+        'Power Supplies': '/Components',
+        'Gaming Mice': '/gears',
+        'Keyboards': '/gears',
+        'Monitors': '/gears',
+        'Headsets': '/gears',
+        'Laptops': '/laptops',
+        'Storage': '/storage',
       }
     };
   },
