@@ -112,10 +112,10 @@ const routes = [
   {
     path: '/storage',
     name: 'storage',
-    component: Storage, // Fixed: Changed Gears to Gear to match import
+    component: Storage, 
     beforeEnter: requireAuth,
     meta: {
-      title: 'Storage', // Fixed: Corrected the title from "Shopping Cart"
+      title: 'Storage',
       requiresAuth: true,
       category: 'shop'
     }
@@ -123,10 +123,10 @@ const routes = [
   {
     path: '/peripherals',
     name: 'peripherals',
-    component: Peripherals, // Fixed: Changed Gears to Gear to match import
+    component: Peripherals,
     beforeEnter: requireAuth,
     meta: {
-      title: 'Peripherals', // Fixed: Corrected the title from "Shopping Cart"
+      title: 'Peripherals',
       requiresAuth: true,
       category: 'shop'
     }
@@ -134,10 +134,10 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: About, // Fixed: Changed Gears to Gear to match import
+    component: About, 
     beforeEnter: requireAuth,
     meta: {
-      title: 'About', // Fixed: Corrected the title from "Shopping Cart"
+      title: 'About', 
       requiresAuth: true,
       category: 'shop'
     }
@@ -145,10 +145,10 @@ const routes = [
   {
     path: '/user',
     name: 'user',
-    component: User, // Fixed: Changed Gears to Gear to match import
+    component: User, 
     beforeEnter: requireAuth,
     meta: {
-      title: 'User', // Fixed: Corrected the title from "Shopping Cart"
+      title: 'User', 
       requiresAuth: true,
       category: 'shop'
     }
@@ -178,7 +178,7 @@ const router = createRouter({
 // Global navigation guard to check authentication
 router.beforeEach((to, from, next) => {
   // Set document title
-  document.title = to.meta.title ? `GameTech - ${to.meta.title}` : 'GameTech Store'
+  document.title = to.meta.title ? `Genesis - ${to.meta.title}` : 'Genesis Store'
   
   // If the route has its own beforeEnter guard, let that handle auth
   if (to.beforeEnter) {
